@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "627473251679",
+    "project_id": "codey-3",
+    "storage_bucket": "codey-3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627473251679:android:378e6212c25d3f49b60aea",
+        "android_client_info": {
+          "package_name": "com.example.codey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627473251679-5vicfdq25usp55cmiifrl040t4ligvk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHe6-RALn99fraAHnxFpu_-ByuwSpsbGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627473251679-5vicfdq25usp55cmiifrl040t4ligvk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
