@@ -1,3 +1,4 @@
+import 'package:codey/login/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -126,9 +127,16 @@ class _LoginPage extends State<Loginpage> {
                       ),
                     ),
                     const SizedBox(height:20),
-                    const Text('Not a member, Sign Up',
-                    style: TextStyle(fontWeight: FontWeight.bold
-                    ),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context,
+                         MaterialPageRoute(builder: (context) => SignUp()));
+                      },
+                      child: const Text(
+                        'Not a member, Sign Up',
+                        style: TextStyle(fontWeight: FontWeight.bold
+                      ),
+                      ),
                     ),
                     const SizedBox(height:20),
                     Row(
