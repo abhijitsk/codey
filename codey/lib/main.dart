@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:codey/login/loginroute.dart';
 //import 'package:codey/login/home_page.dart';
 //import 'package:codey/login/signup.dart';
+import 'package:codey/transitions/splash_rotation.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return  MaterialApp(
       title: "Codey",
-      home: Loginroute(),
+      home: SplashTransition(),
     );
   }
 }
