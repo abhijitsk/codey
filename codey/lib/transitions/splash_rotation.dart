@@ -5,9 +5,6 @@ import 'package:codey/login/loginroute.dart';
 
 
 class SplashTransition extends StatelessWidget{
-  
-
-  
 
   @override
 
@@ -25,18 +22,4 @@ class SplashTransition extends StatelessWidget{
   }
 
   
-}
-
-
-class Home extends StatelessWidget{
-  @override
-
-  Widget build(BuildContext context){
-    return MaterialApp(
-      title: 'Home',
-      home: Scaffold(
-        body: Text('Home')
-      ),
-    );
-  }
 }
