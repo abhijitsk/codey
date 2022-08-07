@@ -1,4 +1,5 @@
 import 'package:codey/login/signup.dart';
+import 'package:codey/login/resetpassword.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -127,6 +128,19 @@ class _LoginPage extends State<Loginpage> {
                       ),
                     ),
                     const SizedBox(height:20),
+                    GestureDetector(
+                      onTap: (){
+                        Navigator.push(context,
+                         MaterialPageRoute(builder: (context) => ResetPassword()));
+                      },
+                      child: const Text(
+                        'Forgot Password. Click to reset',
+                        style: TextStyle(fontWeight: FontWeight.bold
+                      ),
+                      ),
+                    ),
+
+                    const SizedBox(height:30),
                     GestureDetector(
                       onTap: (){
                         Navigator.push(context,

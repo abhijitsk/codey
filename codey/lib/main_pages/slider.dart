@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:codey/login/logoutAlert.dart';
 
 class SliderPage extends StatefulWidget{
 
@@ -154,6 +155,15 @@ class _SliderPage extends State<SliderPage>{
                     color: Colors.brown),
                     ),
                   leading: Icon(Icons.power_settings_new),
+                  onTap: (){
+                    Navigator.pop(context);
+                    showDialog(
+                      context: context, 
+                      builder: (BuildContext context){
+                        return LogOutPopUp();
+                      });
+                    
+                  },
                   ),
                 )
         ]
@@ -162,5 +172,6 @@ class _SliderPage extends State<SliderPage>{
 
     );
   }
-
+  
 }
+
