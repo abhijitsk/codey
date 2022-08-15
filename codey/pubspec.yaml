@@ -68,6 +68,8 @@ flutter:
     - images/icon.png
     - images/logo.png
     - images/profile.png
+    - images/filter.png
+    - images/caraousel.png
         
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

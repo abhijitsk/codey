@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:codey/login/logoutAlert.dart';
 
 class SliderPage extends StatefulWidget{
+ 
 
   @override
 
@@ -9,6 +10,14 @@ class SliderPage extends StatefulWidget{
 }
 
 class _SliderPage extends State<SliderPage>{
+
+  bool homeColor = true;
+  bool catColor = true;
+  bool favourite = true;
+  bool carColor = true; 
+  bool settingColor = true;
+  bool custColor = true;
+  bool countryColor =true;
   @override
 
   Widget build(BuildContext context){
@@ -75,6 +84,17 @@ class _SliderPage extends State<SliderPage>{
               Padding(
                 padding: const EdgeInsets.all(0.0),
                 child: ListTile(
+                  selected: homeColor,
+                  onTap: (){
+                    setState(() {
+                      catColor = false;
+                      favourite = false;
+                      carColor = false; 
+                      settingColor = false;
+                      custColor = false;
+                      countryColor =false;
+                    });
+                  },
                   title: Text('Profile',
                   style:TextStyle(
                     color: Colors.brown[600],
@@ -88,6 +108,16 @@ class _SliderPage extends State<SliderPage>{
               //-----------------------------------------------------------------
               Padding(padding: const EdgeInsets.all(0.0),
               child: ListTile(
+                selected: catColor,
+                onTap: (){
+                  setState(() {
+                    homeColor = false;
+                    favourite = false;
+                    settingColor = false;
+                    custColor = false;
+                    countryColor =false;
+                  });
+                },
                 title :Text(
                   'Category',
                   style: TextStyle(
@@ -100,6 +130,16 @@ class _SliderPage extends State<SliderPage>{
               //-----------------------------------------------------------------
               Padding(padding: const EdgeInsets.all(0.0),
               child: ListTile(
+                selected: favourite,
+                onTap: (){
+                  setState(() {
+                    homeColor = false;;
+                    catColor = false; 
+                    settingColor = false;
+                    custColor = false;
+                    countryColor =false;
+                  });
+                },
                 title :Text(
                   'My Favourites',
                   style: TextStyle(
@@ -112,6 +152,16 @@ class _SliderPage extends State<SliderPage>{
               //-----------------------------------------------------------------
               Padding(padding: const EdgeInsets.all(0.0),
               child: ListTile(
+                selected: settingColor,
+                onTap: (){
+                  setState(() {
+                    homeColor = false;
+                    favourite = false;
+                    catColor = false; 
+                    custColor = false;
+                    countryColor =false;
+                  });
+                },
                 title :Text(
                   'Settings',
                   style: TextStyle(
@@ -124,6 +174,14 @@ class _SliderPage extends State<SliderPage>{
               //-----------------------------------------------------------------
               Padding(padding: const EdgeInsets.all(0.0),
               child: ListTile(
+                selected: custColor,
+                onTap: (){
+                    homeColor = false;
+                    favourite = false;
+                    catColor = false; 
+                    settingColor = false;
+                    countryColor =false;
+                },
                 title :Text(
                   'Customer Service',
                   style: TextStyle(
@@ -136,6 +194,16 @@ class _SliderPage extends State<SliderPage>{
               //-----------------------------------------------------------------
               Padding(padding: const EdgeInsets.all(0.0),
               child: ListTile(
+                selected: countryColor,
+                onTap: (){
+                  setState(() {
+                    homeColor = false;
+                    favourite = false;
+                    catColor = false; 
+                    settingColor = false;
+                    custColor = false;
+                  });
+                },
                 title :Text(
                   'Country',
                   style: TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:codey/transitions/splash_rotation.dart';
-import 'package:codey/login/resetpassword.dart';
-import 'package:codey/main_pages/homepage.dart';
+import 'package:codey/models/fromDatabase.dart';
+
 
 
 Future main() async {
