@@ -5,6 +5,8 @@ import 'package:codey/models/fromDatabase.dart';
 
 
 
+
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -20,9 +22,9 @@ class MyApp extends StatelessWidget{
     return  MaterialApp(
       title: "Codey",
       
-      home: SplashTransition(),
+      //home: SplashTransition(),
       
-      //home: BodyPage(),
+      home: FromDatabase(),
     );
   }
 }

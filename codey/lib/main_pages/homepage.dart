@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:codey/main_pages/slider.dart';
 
+import 'categories.dart';
+
 class BodyPage extends StatefulWidget {
   @override
   _BodyPageState createState() => _BodyPageState();
@@ -87,7 +89,11 @@ class _BodyPageState extends State<BodyPage> {
               child: Image.asset('images/caraousel.png'),
             ),
 
+
             //-------------------------------------------------------------------------
+
+
+            CategoriesHome(),
             Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
