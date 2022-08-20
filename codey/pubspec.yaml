@@ -76,6 +76,9 @@ flutter:
     - images/fashion.png
     - images/footwear.png
     - images/jewellry.png
+    - images/adidas.jpg
+    - images/puma.png
+    - images/nike.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

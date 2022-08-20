@@ -25,6 +25,7 @@ class _FromDatabaseState extends State<FromDatabase>{
 
   Widget build(BuildContext context){
     return Container(
+      color: Colors.white,
       child: StreamBuilder<QuerySnapshot>(stream: database,builder: (BuildContext context,AsyncSnapshot<QuerySnapshot>snapshot){
         if  (snapshot.hasError){
           return Text('Something Went Wrong');
@@ -37,7 +38,31 @@ class _FromDatabaseState extends State<FromDatabase>{
         return ListView.builder(
           itemCount: data.size,
           itemBuilder: (context, index){
-            return Text(data.docs[index]['Name']);
+            return Container(
+              padding: EdgeInsets.all(15),
+              height: 110,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+              
+              child: Row(
+                children: [
+                  Image.asset(data.docs[index]['logo'],height: 50,),
+                  SizedBox(width:35),
+                  Column(children: [
+                    SizedBox(height:20),
+                    Text(data.docs[index]['Name'],style: TextStyle(fontSize: 20,color: Colors.blueGrey),),
+                    Text(data.docs[index]['category'],style: TextStyle(fontSize: 20,color: Colors.blueGrey),),
+                  ],),
+                  SizedBox(width:20),
+                  Container(
+                  color: Colors.yellow,
+                  child: MaterialButton(
+                  onPressed: (){},
+                  child: Text('Get Code'),
+                  ),
+                  
+                  )
+                ],
+              ));
           });
 
       },) ,);
