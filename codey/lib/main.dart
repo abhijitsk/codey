@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget{
     return  MaterialApp(
       title: "Codey",
       
-      //home: SplashTransition(),
+      home: SplashTransition(),
       
-      home: FromDatabase(),
+      //home: FromDatabase(),
     );
   }
 }

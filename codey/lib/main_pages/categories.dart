@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:codey/models/fromDatabase.dart';
+
 
 class CategoriesHome extends StatelessWidget{
   @override
@@ -21,12 +23,17 @@ class CategoriesHome extends StatelessWidget{
 
             Padding(
               padding: EdgeInsets.only(right: 8.0),
-              child: Text(
-                'Sea All',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20)
-                ),
+              child: InkWell(
+                  onTap: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FromDatabase()));
+                  },
+                  child: Text(
+                  'Sea All',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20)
+                  ),
+              ),
               
               ),
           ],
@@ -41,8 +48,9 @@ class CategoriesHome extends StatelessWidget{
             child: Row(
               children:[
                 Container(
-                  height: MediaQuery.of(context).size.height*0.14,
-                  width: MediaQuery.of(context).size.width *0.34,
+                  padding: EdgeInsets.only(top:5),
+                  height: MediaQuery.of(context).size.height*0.11,
+                  width: MediaQuery.of(context).size.width *0.20,
                   decoration: BoxDecoration(
                     color: Colors.brown,
                     borderRadius: BorderRadius.circular(8)),
@@ -50,10 +58,11 @@ class CategoriesHome extends StatelessWidget{
                     children: [
                       InkWell(
                         child: Image.asset('images/food.png',
-                          height: 80,
-                          color: Colors.brown[800],
+                          height: 60,
+                          color: Colors.white,
                           ),
                         ),
+                      //SizedBox(height:5),
                       Text('Food'),
                       
                     ],
@@ -62,19 +71,22 @@ class CategoriesHome extends StatelessWidget{
                 //---------------------------------------------------------------------------
                 SizedBox(width:15),
                 Container(
-                  height: MediaQuery.of(context).size.height*0.14,
-                  width: MediaQuery.of(context).size.width *0.34,
+                  height: MediaQuery.of(context).size.height*0.11,
+                  width: MediaQuery.of(context).size.width *0.20,
                   decoration: BoxDecoration(
-                    color: Colors.brown,
+                    border: Border.all(width: 5,color: Colors.brown.shade600),
+                    color: Colors.brown[600],
                     borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
+                      SizedBox(height: 3,),
                       InkWell(
                         child: Image.asset('images/fashion.png',
-                          height: 80,
-                          color: Colors.brown[800],
+                          height: 60,
+                          color: Colors.white,
                           ),
                         ),
+                      
                       Text('Fashion'),
                       
                     ],
@@ -84,17 +96,18 @@ class CategoriesHome extends StatelessWidget{
                 SizedBox(width:15),
 
                 Container(
-                  height: MediaQuery.of(context).size.height*0.14,
-                  width: MediaQuery.of(context).size.width *0.34,
+                  height: MediaQuery.of(context).size.height*0.11,
+                  width: MediaQuery.of(context).size.width *0.20,
                   decoration: BoxDecoration(
-                    color: Colors.brown,
+                    color: Colors.brown[600],
                     borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
+                      SizedBox(height: 5,),
                       InkWell(
                         child: Image.asset('images/footwear.png',
-                          height: 80,
-                          color: Colors.brown[800],
+                          height: 60,
+                          color: Colors.white,
                           ),
                         ),
                       Text('Footwear'),
@@ -106,17 +119,18 @@ class CategoriesHome extends StatelessWidget{
                 SizedBox(width:15),
 
                 Container(
-                  height: MediaQuery.of(context).size.height*0.14,
-                  width: MediaQuery.of(context).size.width *0.34,
+                  height: MediaQuery.of(context).size.height*0.11,
+                  width: MediaQuery.of(context).size.width *0.20,
                   decoration: BoxDecoration(
                     color: Colors.brown,
                     borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
+                      SizedBox(height: 5,),
                       InkWell(
                         child: Image.asset('images/jewellry.png',
-                          height: 80,
-                          color: Colors.brown[800],
+                          height: 60,
+                          color: Colors.white,
                           ),
                         ),
                       Text('Jewellery'),

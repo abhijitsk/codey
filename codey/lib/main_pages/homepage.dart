@@ -1,6 +1,6 @@
+import 'package:codey/models/fromDatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/main_pages/slider.dart';
-
 import 'categories.dart';
 
 class BodyPage extends StatefulWidget {
@@ -16,6 +16,7 @@ class _BodyPageState extends State<BodyPage> {
       key: _menuKey,
       appBar: AppBar(
         title: Text('Codey'),
+        backgroundColor: Colors.brown,
       ),
       drawer: SliderPage(),
       body: Container(
@@ -75,6 +76,8 @@ class _BodyPageState extends State<BodyPage> {
                     ),
                   ),
                 ),
+
+            
               Container(
                 height: MediaQuery.of(context).size.height* 0.06,
                 width: MediaQuery.of(context).size.width*0.16,
@@ -82,30 +85,23 @@ class _BodyPageState extends State<BodyPage> {
                   onPressed: (){}, icon: Image.asset('images/filter.png')),)
               ]),
             ),
+
+            SizedBox(height:8),
             //-----------------------------------------------------------------------
             Container(
               height: MediaQuery.of(context).size.height*0.33,
               width: MediaQuery.of(context).size.width*0.90,
               child: Image.asset('images/caraousel.png'),
             ),
-
+            SizedBox(height:6),
 
             //-------------------------------------------------------------------------
 
 
             CategoriesHome(),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Card(
-                  child: Container(
-                    height: 200,
-                    width: 150,
-                    color: Colors.amber,
-                  ),
-                ),
-              ],
-            ),
+ 
+            FromDatabase(),
+            
           ]),
         ),
       ),

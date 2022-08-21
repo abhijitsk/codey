@@ -15,16 +15,17 @@ class _FromDatabaseState extends State<FromDatabase>{
 
   Future getName() async{
     await FirebaseFirestore.instance.collection('Database').get().then((snapshot) => snapshot.docs.forEach((element) { 
-      print(element.reference);
       docIds.add(element.reference.id);
     }));
   }
+  
   @override
 
 
 
   Widget build(BuildContext context){
     return Container(
+      width: MediaQuery.of(context).size.width*1,
       color: Colors.white,
       child: StreamBuilder<QuerySnapshot>(stream: database,builder: (BuildContext context,AsyncSnapshot<QuerySnapshot>snapshot){
         if  (snapshot.hasError){
@@ -35,37 +36,149 @@ class _FromDatabaseState extends State<FromDatabase>{
         }
         final data = snapshot.requireData;
         
-        return ListView.builder(
-          itemCount: data.size,
-          itemBuilder: (context, index){
-            return Container(
-              padding: EdgeInsets.all(15),
-              height: 110,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
-              
-              child: Row(
-                children: [
-                  Image.asset(data.docs[index]['logo'],height: 50,),
-                  SizedBox(width:35),
-                  Column(children: [
-                    SizedBox(height:20),
-                    Text(data.docs[index]['Name'],style: TextStyle(fontSize: 20,color: Colors.blueGrey),),
-                    Text(data.docs[index]['category'],style: TextStyle(fontSize: 20,color: Colors.blueGrey),),
-                  ],),
-                  SizedBox(width:20),
-                  Container(
-                  color: Colors.yellow,
-                  child: MaterialButton(
-                  onPressed: (){},
-                  child: Text('Get Code'),
-                  ),
+        return ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: 300,),
+                  child: ListView.builder(
+            itemCount: data.size,
+            itemBuilder: (context, index){
+              return Padding(
+              padding: EdgeInsets.all(8.0),
+                child: Container(
                   
-                  )
-                ],
-              ));
-          });
+                  decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(15)
+                    ),
+                  child: Row(
+                    children: [
+                      SizedBox(width:20),
+
+                      Container(
+                        height: 110,
+                        width: 95,
+                        child: Image.asset(data.docs[index]['logo']),),
+
+                      SizedBox(width:25),
+
+                      Container(
+                        color: Colors.grey,
+                        child: Column( 
+                          children: [
+                            Text(
+                              data.docs[index]['Name'].toString(),
+                              style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
+                            ),
+                            Text(
+                            ''+data.docs[index]['offer']+ '% off',
+                            style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
+                            ),
+                            
+
+                        ],),
+                      ),
+
+                      SizedBox(width:25),
+
+                      Container(
+                        child: MaterialButton(
+                          color: Colors.blueGrey,
+                          onPressed: (){
+                            var code = data.docs[index]['offerCode'];
+                            showDialog(context: context, builder: (BuildContext context)=> _ShowCode(getcode: code));
+                          },
+                          child: Text('Get Code'),
+                          ),
+                          
+                          ),
+                    ]),
+                ),
+              
+              );
+            }),
+        );
 
       },) ,);
   }
 
+}
+
+class _ShowCode extends StatelessWidget{
+  const _ShowCode({Key? key, required this.getcode}) : super(key: key);
+  final String getcode;
+  
+  
+  @override
+  Widget build(BuildContext context){
+    return AlertDialog(
+      elevation: 4,
+      contentPadding: EdgeInsets.all(25),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+      title: Center(
+        child: Text(
+          'Get Code',
+          style: TextStyle(color: Colors.brown),
+          )),
+
+
+      content: Container(
+        height: MediaQuery.of(context).size.height*0.05,
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(height:20),
+              Text(
+                getcode,
+                style: TextStyle(color: Colors.brown),
+                ),
+              
+            ],
+          )),
+      ),
+
+
+
+      actions: [
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child: Text('OK')),
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child: Text('Cancel')),
+      ],
+    );
+  }
+  
+}
+
+class ShowCode extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return AlertDialog(
+      elevation: 4,
+      contentPadding: EdgeInsets.all(25),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(5) ),
+
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.power_settings_new_outlined,
+          color: Colors.brown,)
+
+        ]),
+      content: Text('Do you want to LogOut ?',
+          textAlign: TextAlign.center,
+      ),
+      actions: [
+        TextButton(onPressed: (){
+          
+        },
+        child: Text('Yes'),),
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        },
+        child: Text('No'),)
+      ],
+    );
+  }
 }
