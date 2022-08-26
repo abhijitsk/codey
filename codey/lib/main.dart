@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:codey/transitions/splash_rotation.dart';
-import 'package:codey/models/fromDatabase.dart';
+
 
 
 
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return  MaterialApp(
+    return  const MaterialApp(
+      debugShowCheckedModeBanner: false ,
       title: "Codey",
       
       home: SplashTransition(),

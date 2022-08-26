@@ -1,7 +1,10 @@
+import 'package:codey/main_pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/login/logoutAlert.dart';
 
 class SliderPage extends StatefulWidget{
+  const SliderPage({Key? key}) : super(key: key);
+
  
 
   @override
@@ -18,6 +21,14 @@ class _SliderPage extends State<SliderPage>{
   bool settingColor = true;
   bool custColor = true;
   bool countryColor =true;
+
+  String dropdownvalue = 'DUBAI';
+  var countrylist =[
+    'DUBAI',
+    'ABU DHABI',
+    'SHARJAH',
+    'AJMAN'
+  ];
   @override
 
   Widget build(BuildContext context){
@@ -34,7 +45,7 @@ class _SliderPage extends State<SliderPage>{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(0.0),
+                    padding: const EdgeInsets.all(0.0),
                     child: Image.asset('images/profile.png',
                     height: 60,
                     ),
@@ -44,7 +55,7 @@ class _SliderPage extends State<SliderPage>{
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center ,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+                      children: const [
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -70,14 +81,14 @@ class _SliderPage extends State<SliderPage>{
                   ),
                   IconButton(
                     onPressed: (){}, 
-                    icon: Icon(Icons.arrow_forward_ios),
-                    padding: EdgeInsets.all(0),
+                    icon: const Icon(Icons.arrow_forward_ios),
+                    padding: const EdgeInsets.all(0),
                     alignment: Alignment.centerRight,
                     )
                 ]
                 ),
                 ),
-                decoration: BoxDecoration(color: Colors.brown),
+                decoration: const BoxDecoration(color: Colors.brown),
               ),
               // --------------------------------------------------------------
               //
@@ -93,14 +104,20 @@ class _SliderPage extends State<SliderPage>{
                       settingColor = false;
                       custColor = false;
                       countryColor =false;
-                    });
+                    
+                    }
+                    
+                    );
+                    Navigator.pop(context);
+                    Navigator.push(context, 
+                      MaterialPageRoute(builder: (context)=> UserDetails()));
                   },
                   title: Text('Profile',
                   style:TextStyle(
                     color: Colors.brown[600],
                     fontWeight: FontWeight.bold)
                     ),
-                  leading: Icon(Icons.person_outline,size: 30,),
+                  leading: const Icon(Icons.person_outline,size: 30,),
                 ),
                 
               
@@ -118,13 +135,13 @@ class _SliderPage extends State<SliderPage>{
                     countryColor =false;
                   });
                 },
-                title :Text(
+                title :const Text(
                   'Category',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.brown),
                     ),
-                  leading: Icon(Icons.category_outlined,size: 30,),
+                  leading: const Icon(Icons.category_outlined,size: 30,),
                   ),
                 ),
               //-----------------------------------------------------------------
@@ -133,20 +150,20 @@ class _SliderPage extends State<SliderPage>{
                 selected: favourite,
                 onTap: (){
                   setState(() {
-                    homeColor = false;;
+                    homeColor = false;
                     catColor = false; 
                     settingColor = false;
                     custColor = false;
                     countryColor =false;
                   });
                 },
-                title :Text(
+                title :const Text(
                   'My Favourites',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.brown),
                     ),
-                  leading: Icon(Icons.stars_outlined,size: 30,),
+                  leading: const Icon(Icons.stars_outlined,size: 30,),
                   ),
                 ),
               //-----------------------------------------------------------------
@@ -162,13 +179,13 @@ class _SliderPage extends State<SliderPage>{
                     countryColor =false;
                   });
                 },
-                title :Text(
+                title :const Text(
                   'Settings',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.brown),
                     ),
-                  leading: Icon(Icons.settings_outlined,size: 30,),
+                  leading: const Icon(Icons.settings_outlined,size: 30,),
                   ),
                 ),
               //-----------------------------------------------------------------
@@ -182,13 +199,13 @@ class _SliderPage extends State<SliderPage>{
                     settingColor = false;
                     countryColor =false;
                 },
-                title :Text(
+                title :const Text(
                   'Customer Service',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.brown),
                     ),
-                  leading: Icon(Icons.headset_mic_outlined,size: 30,),
+                  leading: const Icon(Icons.headset_mic_outlined,size: 30,),
                   ),
                 ),
               //-----------------------------------------------------------------
@@ -204,25 +221,44 @@ class _SliderPage extends State<SliderPage>{
                     custColor = false;
                   });
                 },
-                title :Text(
-                  'Country',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.brown),
-                    ),
-                  leading: Icon(Icons.flag_outlined),
+                title :Row(
+                  children: [
+                    const Text(
+                      'Country',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.brown),
+                        ),
+                    SizedBox(width: 25,), 
+                    DropdownButton(
+                      dropdownColor: Colors.white,
+                      style: TextStyle(fontSize: 12,color: Colors.brown,fontWeight: FontWeight.bold),
+                      value: dropdownvalue,
+                      items: countrylist.map((String countrylist) => DropdownMenuItem(
+                        value: countrylist,
+                        child: Text(countrylist),)).toList(),
+                      onChanged: (String? newValue){
+                        setState(() {
+                          dropdownvalue=newValue!;
+                        });
+                      },
+                      ) ,
+                    
+                  ],
+                ),
+                  leading: const Icon(Icons.flag_outlined),
                   ),
                 ),
               //-----------------------------------------------------------------
               Padding(padding: const EdgeInsets.all(0.0),
               child: ListTile(
-                title :Text(
+                title :const Text(
                   'LogOut',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.brown),
                     ),
-                  leading: Icon(Icons.power_settings_new),
+                  leading: const Icon(Icons.power_settings_new),
                   onTap: (){
                     Navigator.pop(context);
                     showDialog(

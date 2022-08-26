@@ -5,6 +5,8 @@ import 'package:codey/login/loginroute.dart';
 
 
 class SplashTransition extends StatelessWidget{
+  const SplashTransition({Key? key}) : super(key: key);
+
 
   @override
 
@@ -17,7 +19,8 @@ class SplashTransition extends StatelessWidget{
       
       
       
-      nextScreen: Loginroute() ,
+      
+      nextScreen: const Loginroute() ,
     );
   }
 

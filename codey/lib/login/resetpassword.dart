@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:codey/login/loginpage.dart';
 
 class ResetPassword extends StatelessWidget{
-  final _emailController = TextEditingController();
+   ResetPassword({Key? key}) : super(key: key);
+   final _emailController = TextEditingController();
+
 
   @override
 
@@ -24,24 +26,24 @@ class ResetPassword extends StatelessWidget{
                     
                     ),
 
-                    SizedBox(height:40),
+                    const SizedBox(height:40),
 
-                    Text(
+                    const Text(
                       'Forgot Password',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 25 ),),
 
-                    SizedBox(height:20),
+                    const SizedBox(height:20),
 
-                    Text(
+                    const Text(
                       'Please enter the email address'+'\n'+' associated with the account',
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold),),
                     
-                    SizedBox(height:20),
+                    const SizedBox(height:20),
 
                     Container(
                       width: MediaQuery.of(context).size.width*0.8,
@@ -52,13 +54,13 @@ class ResetPassword extends StatelessWidget{
                         color: Colors.white ),
                       child: Center(
                         child: Padding(
-                          padding: EdgeInsets.only(left:20.0),
+                          padding: const EdgeInsets.only(left:20.0),
                           child: TextField(
                             controller: _emailController,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 16),
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               icon: Icon(Icons.email_outlined,color: Colors.black,),
                               hintText: 'Enter your email address'
 
@@ -69,7 +71,7 @@ class ResetPassword extends StatelessWidget{
 
 
                     ),
-                  SizedBox(height:35),
+                  const SizedBox(height:35),
 
                   MaterialButton(
                     onPressed: resetPassword,
@@ -77,7 +79,7 @@ class ResetPassword extends StatelessWidget{
                     minWidth: MediaQuery.of(context).size.width*0.4,
                     color: Colors.brown[400],
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-                    child: Text('Reset Password',
+                    child: const Text('Reset Password',
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -85,19 +87,19 @@ class ResetPassword extends StatelessWidget{
                         ),
                     ),
                   
-                  SizedBox(height : 15),
+                  const SizedBox(height : 15),
 
                   MaterialButton(
                     onPressed: (){
                       Navigator.push(context, 
-                        MaterialPageRoute(builder: (BuildContext context)=>Loginpage()));
+                        MaterialPageRoute(builder: (BuildContext context)=>const Loginpage()));
                     },
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                     height: 50,
                     minWidth: MediaQuery.of(context).size.width * 0.4,
                     color: Colors.brown[400],
-                    child: Text('Back to login',
-                      style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                    child: const Text('Back to login',
+                      style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
                     ),
                     ),
                 ]),)

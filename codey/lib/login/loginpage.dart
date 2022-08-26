@@ -24,6 +24,7 @@ class _LoginPage extends State<Loginpage> {
     password: _passwordController.text.trim(),);
   }
 
+  
   @override
   void dispose(){
     _emailController.dispose();
@@ -31,7 +32,7 @@ class _LoginPage extends State<Loginpage> {
     super.dispose();
   }
   
-
+  @override
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: Colors.brown[600],
@@ -61,7 +62,7 @@ class _LoginPage extends State<Loginpage> {
                         ),
 
                         child:  Padding(
-                          padding: EdgeInsets.only(left: 20),
+                          padding: const EdgeInsets.only(left: 20),
                           child: TextField(
                             controller: _emailController,
                             decoration: const InputDecoration(
@@ -89,7 +90,7 @@ class _LoginPage extends State<Loginpage> {
                         ),
 
                         child:  Padding(
-                          padding: EdgeInsets.only(left: 20),
+                          padding: const EdgeInsets.only(left: 20),
                           child: TextField(
                             controller: _passwordController,
                             obscureText: true,
@@ -159,7 +160,7 @@ class _LoginPage extends State<Loginpage> {
                         MaterialButton(
                           onPressed: () {},
                           minWidth: MediaQuery.of(context).size.width*0.4,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30),
                               topLeft: Radius.circular(30)
@@ -167,7 +168,7 @@ class _LoginPage extends State<Loginpage> {
                           ),
                           height: 50,
                           color: Colors.brown[400],
-                          child:Text(
+                          child:const Text(
                             'Google',
                             style: TextStyle(color: Colors.white,
                             fontSize: 15,
@@ -178,7 +179,7 @@ class _LoginPage extends State<Loginpage> {
                         MaterialButton(
                           onPressed: () {},
                           minWidth: MediaQuery.of(context).size.width*0.4,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               bottomRight: Radius.circular(30),
                               topRight: Radius.circular(30)
@@ -186,7 +187,7 @@ class _LoginPage extends State<Loginpage> {
                           ),
                           height: 50,
                           color: Colors.brown[400],
-                          child:Text(
+                          child:const Text(
                             'Facebook',
                             style: TextStyle(color: Colors.white,
                             fontSize: 15,

@@ -3,6 +3,8 @@ import 'package:codey/models/fromDatabase.dart';
 
 
 class CategoriesHome extends StatelessWidget{
+  const CategoriesHome({Key? key}) : super(key: key);
+
   @override
 
   Widget build(BuildContext context){
@@ -11,8 +13,8 @@ class CategoriesHome extends StatelessWidget{
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left :8.0),
+            const Padding(
+              padding: EdgeInsets.only(left :8.0),
               child: Text(
                 'Browse Categories',
                 style: TextStyle(
@@ -22,12 +24,12 @@ class CategoriesHome extends StatelessWidget{
             ),
 
             Padding(
-              padding: EdgeInsets.only(right: 8.0),
+              padding: const EdgeInsets.only(right: 8.0),
               child: InkWell(
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FromDatabase()));
                   },
-                  child: Text(
+                  child: const Text(
                   'Sea All',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -48,7 +50,7 @@ class CategoriesHome extends StatelessWidget{
             child: Row(
               children:[
                 Container(
-                  padding: EdgeInsets.only(top:5),
+                  padding: const EdgeInsets.only(top:5),
                   height: MediaQuery.of(context).size.height*0.11,
                   width: MediaQuery.of(context).size.width *0.20,
                   decoration: BoxDecoration(
@@ -63,13 +65,13 @@ class CategoriesHome extends StatelessWidget{
                           ),
                         ),
                       //SizedBox(height:5),
-                      Text('Food'),
+                      const Text('Food'),
                       
                     ],
                   ),
                 ),
                 //---------------------------------------------------------------------------
-                SizedBox(width:15),
+                const SizedBox(width:15),
                 Container(
                   height: MediaQuery.of(context).size.height*0.11,
                   width: MediaQuery.of(context).size.width *0.20,
@@ -79,7 +81,7 @@ class CategoriesHome extends StatelessWidget{
                     borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
-                      SizedBox(height: 3,),
+                      const SizedBox(height: 3,),
                       InkWell(
                         child: Image.asset('images/fashion.png',
                           height: 60,
@@ -87,13 +89,13 @@ class CategoriesHome extends StatelessWidget{
                           ),
                         ),
                       
-                      Text('Fashion'),
+                      const Text('Fashion'),
                       
                     ],
                   ),
                 ),
                 //---------------------------------------------
-                SizedBox(width:15),
+                const SizedBox(width:15),
 
                 Container(
                   height: MediaQuery.of(context).size.height*0.11,
@@ -103,20 +105,21 @@ class CategoriesHome extends StatelessWidget{
                     borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       InkWell(
                         child: Image.asset('images/footwear.png',
                           height: 60,
                           color: Colors.white,
                           ),
                         ),
-                      Text('Footwear'),
+                      
+                      const Text('Footwear'),
                       
                     ],
                   ),
                 ),
                 //---------------------------------------------------------------------------
-                SizedBox(width:15),
+                const SizedBox(width:15),
 
                 Container(
                   height: MediaQuery.of(context).size.height*0.11,
@@ -126,14 +129,14 @@ class CategoriesHome extends StatelessWidget{
                     borderRadius: BorderRadius.circular(8)),
                   child: Column(
                     children: [
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       InkWell(
                         child: Image.asset('images/jewellry.png',
                           height: 60,
                           color: Colors.white,
                           ),
                         ),
-                      Text('Jewellery'),
+                      const Text('Jewellery'),
                       
                     ],
                   ),

@@ -4,6 +4,8 @@ import 'package:codey/main_pages/slider.dart';
 import 'categories.dart';
 
 class BodyPage extends StatefulWidget {
+  const BodyPage({Key? key}) : super(key: key);
+
   @override
   _BodyPageState createState() => _BodyPageState();
 }
@@ -15,20 +17,20 @@ class _BodyPageState extends State<BodyPage> {
     return Scaffold(
       key: _menuKey,
       appBar: AppBar(
-        title: Text('Codey'),
+        title: const Text('Codey'),
         backgroundColor: Colors.brown,
       ),
-      drawer: SliderPage(),
+      drawer: const SliderPage(),
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         child: SingleChildScrollView(
           child: Column(children: <Widget>[
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             //-------------------------------------------------------------------------
-            Align(
+            const Align(
               alignment: Alignment.centerLeft,
               child: Text(
                 'Browse Offers',
@@ -39,7 +41,7 @@ class _BodyPageState extends State<BodyPage> {
               ),
             ),
             //------------------------------------------------------------------------
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
 
             Container(
 
@@ -53,15 +55,15 @@ class _BodyPageState extends State<BodyPage> {
                   height: MediaQuery.of(context).size.height * 0.06,
                   width: MediaQuery.of(context).size.width * 0.7,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
                       border: Border.all(width: 1.0),
                   ),
                   child: Center(
                     child: Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 20),
                       child: SafeArea(
                                               child: TextField(
-                          style: TextStyle(decoration: TextDecoration.none),
+                          style: const TextStyle(decoration: TextDecoration.none),
                           decoration: InputDecoration(
                             icon: Icon(
                               Icons.search,
@@ -86,21 +88,19 @@ class _BodyPageState extends State<BodyPage> {
               ]),
             ),
 
-            SizedBox(height:8),
+            const SizedBox(height:8),
             //-----------------------------------------------------------------------
             Container(
               height: MediaQuery.of(context).size.height*0.33,
               width: MediaQuery.of(context).size.width*0.90,
               child: Image.asset('images/caraousel.png'),
             ),
-            SizedBox(height:6),
+            const SizedBox(height:6),
 
             //-------------------------------------------------------------------------
 
-
-            CategoriesHome(),
  
-            FromDatabase(),
+            const FromDatabase(),
             
           ]),
         ),

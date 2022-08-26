@@ -16,8 +16,8 @@ class _SignUpState extends State<SignUp>{
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _confirmpassword = TextEditingController();
-  final snackBar = SnackBar(content: Text('please enter all information'),);
-  final snackBarpass = SnackBar(content: Text('enter same password for both the fields'),);
+  final snackBar = const SnackBar(content: Text('please enter all information'),);
+  final snackBarpass = const SnackBar(content: Text('enter same password for both the fields'),);
 
   
   
@@ -40,7 +40,7 @@ class _SignUpState extends State<SignUp>{
               const SizedBox(height: 40),
               // email address box
               Padding(
-                padding:EdgeInsets.symmetric(horizontal:25) ,
+                padding:const EdgeInsets.symmetric(horizontal:25) ,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.blue,
@@ -48,7 +48,7 @@ class _SignUpState extends State<SignUp>{
                     borderRadius: BorderRadius.circular(12),
                      ),
                   child: Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: TextField(
                           controller: _email,
                           decoration: const InputDecoration(
@@ -61,12 +61,12 @@ class _SignUpState extends State<SignUp>{
                       ),
                 ),
 
-              SizedBox(height:15),
+              const SizedBox(height:15),
 
 
               // password text editor
               Padding(
-                padding:EdgeInsets.symmetric(horizontal:25) ,
+                padding:const EdgeInsets.symmetric(horizontal:25) ,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.blue,
@@ -74,7 +74,7 @@ class _SignUpState extends State<SignUp>{
                     borderRadius: BorderRadius.circular(12),
                      ),
                   child: Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: TextField(
                           controller: _password,
                           decoration: const InputDecoration(
@@ -87,12 +87,12 @@ class _SignUpState extends State<SignUp>{
                       ),
                 ),
 
-              SizedBox(height:15),
+              const SizedBox(height:15),
 
 
               // confirm password text editor
               Padding(
-                padding:EdgeInsets.symmetric(horizontal:25) ,
+                padding:const EdgeInsets.symmetric(horizontal:25) ,
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.blue,
@@ -100,7 +100,7 @@ class _SignUpState extends State<SignUp>{
                     borderRadius: BorderRadius.circular(12),
                      ),
                   child: Padding(
-                        padding: EdgeInsets.only(left: 20),
+                        padding: const EdgeInsets.only(left: 20),
                         child: TextField(
                           controller: _confirmpassword,
                           decoration: const InputDecoration(
@@ -113,7 +113,7 @@ class _SignUpState extends State<SignUp>{
                      
                       ),
                 ),
-              SizedBox(height :15),
+              const SizedBox(height :15),
               
               // create account button
               MaterialButton(
@@ -140,14 +140,14 @@ class _SignUpState extends State<SignUp>{
                 shape: RoundedRectangleBorder(
                   borderRadius:BorderRadius.circular(20),
                   ),
-                child: Text(
+                child: const Text(
                   'Create Account',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
                   ),
                 ),
-              SizedBox(height:15),
+              const SizedBox(height:15),
               
               
               // Button for login Page
@@ -163,7 +163,7 @@ class _SignUpState extends State<SignUp>{
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                   ),
-                child: Text(
+                child: const Text(
                   'Login Page',
                   style: TextStyle(
                     color: Colors.white,

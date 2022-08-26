@@ -3,7 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class FromDatabase extends StatefulWidget{
+  const FromDatabase({Key? key}) : super(key: key);
+
   @override
+
 
   _FromDatabaseState createState()=>_FromDatabaseState();
 }
@@ -18,6 +21,8 @@ class _FromDatabaseState extends State<FromDatabase>{
       docIds.add(element.reference.id);
     }));
   }
+
+  
   
   @override
 
@@ -29,67 +34,86 @@ class _FromDatabaseState extends State<FromDatabase>{
       color: Colors.white,
       child: StreamBuilder<QuerySnapshot>(stream: database,builder: (BuildContext context,AsyncSnapshot<QuerySnapshot>snapshot){
         if  (snapshot.hasError){
-          return Text('Something Went Wrong');
+          return const Text('Something Went Wrong');
         }
         if (snapshot.connectionState==ConnectionState.waiting){
-          return Text('Connection issue');
+          return const Text('Connection issue');
         }
         final data = snapshot.requireData;
+        bool _islikebuttonClicked = false;
         
         return ConstrainedBox(
-                  constraints: BoxConstraints(maxHeight: 300,),
+                  constraints: const BoxConstraints(maxHeight: 400,),
                   child: ListView.builder(
             itemCount: data.size,
             itemBuilder: (context, index){
               return Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  
+                  height: 200,
                   decoration: BoxDecoration(
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(15)
                     ),
                   child: Row(
                     children: [
-                      SizedBox(width:20),
+                      const SizedBox(width:20),
 
                       Container(
                         height: 110,
                         width: 95,
                         child: Image.asset(data.docs[index]['logo']),),
 
-                      SizedBox(width:25),
+                      const SizedBox(width:5),
 
                       Container(
+                        width: 150,
                         color: Colors.grey,
-                        child: Column( 
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center, 
                           children: [
                             Text(
                               data.docs[index]['Name'].toString(),
                               style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
                             ),
                             Text(
-                            ''+data.docs[index]['offer']+ '% off',
-                            style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
+                            ''+data.docs[index]['offer']+ '% off'+' on selected merchandise'+'\n'+'Grab it before offer expires',
+                            style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.brown[600]),
                             ),
-                            
-
+                            Text('')
                         ],),
                       ),
 
-                      SizedBox(width:25),
+                      const SizedBox(width:5),
 
-                      Container(
-                        child: MaterialButton(
-                          color: Colors.blueGrey,
+                      
+
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                        IconButton(
+                          onPressed: (){
+                            setState(() {
+                              
+                              _islikebuttonClicked = !_islikebuttonClicked;
+                            });
+                             },
+                          icon:  Icon(Icons.favorite,
+                            color: _islikebuttonClicked? Colors.blue:Colors.red,)),
+
+                        const SizedBox(height: 30,),
+
+                        MaterialButton(
                           onPressed: (){
                             var code = data.docs[index]['offerCode'];
                             showDialog(context: context, builder: (BuildContext context)=> _ShowCode(getcode: code));
                           },
-                          child: Text('Get Code'),
+                          color: Colors.blueGrey,
+                          child: const Text('Get Code'),
                           ),
-                          
-                          ),
+                      ],),
+
+                      
                     ]),
                 ),
               
@@ -111,9 +135,9 @@ class _ShowCode extends StatelessWidget{
   Widget build(BuildContext context){
     return AlertDialog(
       elevation: 4,
-      contentPadding: EdgeInsets.all(25),
+      contentPadding: const EdgeInsets.all(25),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-      title: Center(
+      title: const Center(
         child: Text(
           'Get Code',
           style: TextStyle(color: Colors.brown),
@@ -125,10 +149,10 @@ class _ShowCode extends StatelessWidget{
         child: Center(
           child: Column(
             children: [
-              SizedBox(height:20),
+              const SizedBox(height:20),
               Text(
                 getcode,
-                style: TextStyle(color: Colors.brown),
+                style: const TextStyle(color: Colors.brown),
                 ),
               
             ],
@@ -140,45 +164,13 @@ class _ShowCode extends StatelessWidget{
       actions: [
         TextButton(onPressed: (){
           Navigator.pop(context);
-        }, child: Text('OK')),
+        }, child: const Text('OK')),
         TextButton(onPressed: (){
           Navigator.pop(context);
-        }, child: Text('Cancel')),
+        }, child: const Text('Cancel')),
       ],
     );
   }
   
 }
 
-class ShowCode extends StatelessWidget{
-  @override
-  Widget build(BuildContext context){
-    return AlertDialog(
-      elevation: 4,
-      contentPadding: EdgeInsets.all(25),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5) ),
-
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.power_settings_new_outlined,
-          color: Colors.brown,)
-
-        ]),
-      content: Text('Do you want to LogOut ?',
-          textAlign: TextAlign.center,
-      ),
-      actions: [
-        TextButton(onPressed: (){
-          
-        },
-        child: Text('Yes'),),
-        TextButton(onPressed: (){
-          Navigator.pop(context);
-        },
-        child: Text('No'),)
-      ],
-    );
-  }
-}
