@@ -1,7 +1,7 @@
 import 'package:codey/models/fromDatabase.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/main_pages/slider.dart';
-import 'categories.dart';
+
 
 class BodyPage extends StatefulWidget {
   const BodyPage({Key? key}) : super(key: key);

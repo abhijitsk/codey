@@ -110,7 +110,7 @@ class _SliderPage extends State<SliderPage>{
                     );
                     Navigator.pop(context);
                     Navigator.push(context, 
-                      MaterialPageRoute(builder: (context)=> UserDetails()));
+                      MaterialPageRoute(builder: (context)=> Profile()));
                   },
                   title: Text('Profile',
                   style:TextStyle(

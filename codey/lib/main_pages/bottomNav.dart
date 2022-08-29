@@ -26,7 +26,7 @@ class _BottomNavState extends State<BottomNav>{
         return BodyPage();
 
       case 3 :
-        return UserDetails();
+        return Profile();
 
         break;
 

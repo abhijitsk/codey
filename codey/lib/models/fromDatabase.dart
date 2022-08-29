@@ -16,14 +16,8 @@ class _FromDatabaseState extends State<FromDatabase>{
   List<String> docIds = [];
   final Stream<QuerySnapshot>  database = FirebaseFirestore.instance.collection('Database').snapshots();
 
-  Future getName() async{
-    await FirebaseFirestore.instance.collection('Database').get().then((snapshot) => snapshot.docs.forEach((element) { 
-      docIds.add(element.reference.id);
-    }));
-  }
-
   
-  
+  bool _islikebuttonClicked = false;
   @override
 
 
@@ -40,7 +34,7 @@ class _FromDatabaseState extends State<FromDatabase>{
           return const Text('Connection issue');
         }
         final data = snapshot.requireData;
-        bool _islikebuttonClicked = false;
+        
         
         return ConstrainedBox(
                   constraints: const BoxConstraints(maxHeight: 400,),
@@ -60,6 +54,8 @@ class _FromDatabaseState extends State<FromDatabase>{
                       const SizedBox(width:20),
 
                       Container(
+                        padding: EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(),
                         height: 110,
                         width: 95,
                         child: Image.asset(data.docs[index]['logo']),),
@@ -80,7 +76,7 @@ class _FromDatabaseState extends State<FromDatabase>{
                             ''+data.docs[index]['offer']+ '% off'+' on selected merchandise'+'\n'+'Grab it before offer expires',
                             style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.brown[600]),
                             ),
-                            Text('')
+                            
                         ],),
                       ),
 
@@ -93,6 +89,7 @@ class _FromDatabaseState extends State<FromDatabase>{
                         children: [
                         IconButton(
                           onPressed: (){
+                            
                             setState(() {
                               
                               _islikebuttonClicked = !_islikebuttonClicked;
@@ -118,7 +115,8 @@ class _FromDatabaseState extends State<FromDatabase>{
                 ),
               
               );
-            }),
+            }
+            ),
         );
 
       },) ,);
@@ -145,6 +143,7 @@ class _ShowCode extends StatelessWidget{
 
 
       content: Container(
+        
         height: MediaQuery.of(context).size.height*0.05,
         child: Center(
           child: Column(

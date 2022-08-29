@@ -1,149 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:codey/models/profileinfo.dart';
 
-class UserDetails extends StatefulWidget{
+class Profile extends StatefulWidget {
   @override
-  _UserDetailsState createState()=> _UserDetailsState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _UserDetailsState extends State<UserDetails>{
-  final _dateController = TextEditingController();
+class _ProfileState extends State<Profile> {
+
   @override
-
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(child: Text('Edit Profile'),
-        ),
-      backgroundColor: Colors.brown,
-        ),
-      body: SafeArea(
-              child: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                SizedBox(height:10),
-                //-------------------------------------------------------------> ROW1
-                Row(
-                  children:[
-                    const Expanded(
-                      flex: 2,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'First Name',
-                          labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            borderSide: BorderSide(color: Colors.black),
-                          )
-                        ),
-                      ),),
-                    const SizedBox(width:5),
+        body: SafeArea(
+      child: Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 50),
 
-                    const Expanded(
-                      flex: 2,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Last Name',
-                          labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            borderSide: BorderSide(color: Colors.black),
-                          )
-                        ),
-                      ),),
-                  ]
-                ),
+              //--------------------------------------------------------------->
+              Profileinfo(),
+              //--------------------------------------------------------------->
+              const SizedBox(height:80),
+              Container(
+                //color: Colors.black,
+                height: MediaQuery.of(context).size.height*0.1,
+                decoration: const BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft:Radius.circular(35),
+                    bottomRight: Radius.circular(35), )),
+                
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-              const SizedBox(height:10),
-              //-------------------------------------------------------------> ROW2
-              const TextField(decoration: InputDecoration(
-                labelText: 'Email address',
-                labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  borderSide: BorderSide(color: Colors.black),
-                    ) ),),
-              SizedBox(height:10),
-              //-------------------------------------------------------------> ROW3
-              Row(
-                  children:[
-                    const Expanded(
-                      flex: 2,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Area Code',
-                          labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            borderSide: BorderSide(color: Colors.black),
-                          )
-                        ),
-                      ),),
-                    const SizedBox(width:5),
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          '125',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                            ),),
+                        const Text(
+                          'Shops',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                            ),),
+                      ],),
+                    
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          '05',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                            ),),
+                        const Text(
+                          'Caategories',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                            ),),
+                      ],),
+                    
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          '1205',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                            ),),
+                        const Text(
+                          'Codes',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15
+                            ),),
+                        
+                      
+                      ],),
 
-                    const Expanded(
-                      flex: 4,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          labelText: 'Telephone number',
-                          labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            borderSide: BorderSide(color: Colors.black),
-                          )
-                        ),
-                      ),),
-                  ]
-                ),
+                  ]),),
+                //----------------------------------------------------------------->
+                SizedBox(height:15),
               
-              SizedBox(height:10),
-              //-------------------------------------------------------------> ROW4
-              const TextField(decoration: InputDecoration(
-                labelText: 'vlogger ID',
-                labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  borderSide: BorderSide(color: Colors.black),
-                    ) ),),
-              
-
-              SizedBox(height:10),
-              
-              //-------------------------------------------------------------> ROW4
-               TextField(
-                readOnly: true,
-                controller: _dateController,
-                decoration: const InputDecoration(
-                labelText: 'Birthday ',
-                labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  borderSide: BorderSide(color: Colors.black),
-                    ),
-                    ),
-                onTap: () async{
-                  var date = await showDatePicker(
-                    context: context, 
-                    initialDate: DateTime.now(), 
-                    firstDate: DateTime(1900), 
-                    lastDate: DateTime(2100));
-                  _dateController.text = date.toString().substring(0,10);
-                },
-                    ),
-              
-              SizedBox(height:20),
-              
-              //-------------------------------------------------------------> ROW5
-              MaterialButton(
-                onPressed: (){},
-                child: Text('Update Password'),
-                color: Colors.grey,
-                ),
-
-              ]),) ),
-      ),
-    );
+            ],
+          )),
+    ));
   }
-
 }
