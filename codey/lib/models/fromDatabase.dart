@@ -3,10 +3,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class FromDatabase extends StatefulWidget{
-  const FromDatabase({Key? key}) : super(key: key);
-
+  FromDatabase({Key? key, required this.brandName}) : super(key: key);
+  String brandName = "";
+  
   @override
-
+  
 
   _FromDatabaseState createState()=>_FromDatabaseState();
 }
@@ -15,7 +16,7 @@ class _FromDatabaseState extends State<FromDatabase>{
 
   List<String> docIds = [];
   final Stream<QuerySnapshot>  database = FirebaseFirestore.instance.collection('Database').snapshots();
-
+  
   
   bool _islikebuttonClicked = false;
   @override
@@ -24,8 +25,9 @@ class _FromDatabaseState extends State<FromDatabase>{
 
   Widget build(BuildContext context){
     return Container(
+      
       width: MediaQuery.of(context).size.width*1,
-      color: Colors.white,
+      color: Colors.brown[200],
       child: StreamBuilder<QuerySnapshot>(stream: database,builder: (BuildContext context,AsyncSnapshot<QuerySnapshot>snapshot){
         if  (snapshot.hasError){
           return const Text('Something Went Wrong');
@@ -34,14 +36,19 @@ class _FromDatabaseState extends State<FromDatabase>{
           return const Text('Connection issue');
         }
         final data = snapshot.requireData;
-        
+
+      
         
         return ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 400,),
+                  constraints: const BoxConstraints(maxHeight: 700,),
                   child: ListView.builder(
             itemCount: data.size,
             itemBuilder: (context, index){
-              return Padding(
+              var search_data = snapshot.data!.docs[index].data()
+                as Map<String,dynamic>;
+
+              if (search_data['Name'].toString().toLowerCase().startsWith(widget.brandName)){
+               return Padding(
               padding: const EdgeInsets.all(8.0),
                 child: Container(
                   height: 200,
@@ -54,11 +61,12 @@ class _FromDatabaseState extends State<FromDatabase>{
                       const SizedBox(width:20),
 
                       Container(
-                        padding: EdgeInsets.all(8.0),
-                        decoration: BoxDecoration(),
-                        height: 110,
-                        width: 95,
-                        child: Image.asset(data.docs[index]['logo']),),
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: const BoxDecoration(),
+                        height: 90,
+                        width: 80,
+                        child: Image.asset(data.docs[index]['logo'],fit:BoxFit.fill),
+                        ),
 
                       const SizedBox(width:5),
 
@@ -76,6 +84,7 @@ class _FromDatabaseState extends State<FromDatabase>{
                             ''+data.docs[index]['offer']+ '% off'+' on selected merchandise'+'\n'+'Grab it before offer expires',
                             style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.brown[600]),
                             ),
+                            Text(search_data['Name'])
                             
                         ],),
                       ),
@@ -115,7 +124,10 @@ class _FromDatabaseState extends State<FromDatabase>{
                 ),
               
               );
-            }
+ 
+              }
+              
+              return Container();          }
             ),
         );
 

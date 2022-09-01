@@ -12,21 +12,34 @@ class Profileinfo extends StatelessWidget {
     Future<DocumentSnapshot> data2() async {
       DocumentSnapshot snapshot = await FirebaseFirestore.instance
           .collection('EditProfile')
-          .doc('sample@mail.com')
+          .doc('check@mail.com')
           .get();
-
-      return (snapshot);
+      return snapshot;
+      
     }
 
     return Container(
-      height: 270,
-      
+      height: 300,
+      color: Colors.brown[200],
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
           title: FutureBuilder(
         future: data2(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return Center(
+          if(snapshot.connectionState==ConnectionState.done){
+          if (!snapshot.data.exists){
+            return Container(
+              alignment: Alignment.center,
+              height: 50,
+              
+              child: 
+                Text('Please enter the details'),
+                
+              
+            );
+          
+          }
+            return Center(
             child: Column(
               children: [
                 Container(
@@ -65,10 +78,19 @@ class Profileinfo extends StatelessWidget {
                 Text(
                   snapshot.data['DOB'].toString(),
                   style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
-                  ),
+                  ),  
               ],
             ),
           );
+          }else{
+            return SizedBox(
+              height: MediaQuery.of(context).size.height*0.2,
+              width: MediaQuery.of(context).size.width,
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
         },
       )),
     );

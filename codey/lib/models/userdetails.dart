@@ -80,6 +80,7 @@ class _UserDetailsState extends State<UserDetails>{
       body: SafeArea(
               child: SingleChildScrollView(
           child: Container(
+            color: Colors.brown[200],
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [

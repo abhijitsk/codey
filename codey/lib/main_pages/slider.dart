@@ -33,6 +33,7 @@ class _SliderPage extends State<SliderPage>{
 
   Widget build(BuildContext context){
     return Drawer(
+      backgroundColor: Colors.brown[200],
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[

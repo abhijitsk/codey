@@ -27,7 +27,7 @@ class CategoriesHome extends StatelessWidget{
               padding: const EdgeInsets.only(right: 8.0),
               child: InkWell(
                   onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FromDatabase()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FromDatabase(brandName: '',)));
                   },
                   child: const Text(
                   'Sea All',

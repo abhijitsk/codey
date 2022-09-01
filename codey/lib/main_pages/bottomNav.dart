@@ -1,18 +1,21 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/main_pages/homepage.dart';
 import 'package:codey/main_pages/profile.dart';
+import 'package:codey/main_pages/search.dart';
 
 class BottomNav extends StatefulWidget{
   const BottomNav({Key? key}) : super(key: key);
 
   @override
-  _BottomNavState createState()=> _BottomNavState();
+  BottomNavState createState()=> BottomNavState();
 }
 
-class _BottomNavState extends State<BottomNav>{
+class BottomNavState extends State<BottomNav>{
+  int _selectedIndex = 0;
   @override
 
-  int _selectedIndex = 0;
+  
 
   Widget _navOptions(int _currentIndex){
     switch(_currentIndex){
@@ -23,7 +26,7 @@ class _BottomNavState extends State<BottomNav>{
         return BodyPage();
 
       case 2 :
-        return BodyPage();
+        return SearchFunction();
 
       case 3 :
         return Profile();
@@ -38,43 +41,23 @@ class _BottomNavState extends State<BottomNav>{
   Widget build(BuildContext context){
     return Scaffold(
       body: _navOptions(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.brown,
-        selectedItemColor: Colors.black,
-        showSelectedLabels: false,
-        selectedLabelStyle: TextStyle(color: Colors.black,fontSize: 15),
-        unselectedItemColor: Colors.grey,
-        currentIndex: _selectedIndex,
-        type: BottomNavigationBarType.fixed,
-        items: [
-          BottomNavigationBarItem(
-            
-            label: 'Home',
-            icon: _selectedIndex ==0?Icon(Icons.home_filled):Icon(Icons.home_outlined),
-
-          ),
-          BottomNavigationBarItem(
-            label: 'Category',
-            icon: _selectedIndex ==1?Icon(Icons.category):Icon(Icons.category_outlined),
-            
-          ),
-          BottomNavigationBarItem(
-            label: 'Settings',
-            icon: _selectedIndex ==2?Icon(Icons.settings):Icon(Icons.settings_outlined),
-            
-          ),
-          BottomNavigationBarItem(
-            label: 'Profile',
-            icon: _selectedIndex ==3?Icon(Icons.person):Icon(Icons.person_outline),
-            
-          )
+      bottomNavigationBar: ConvexAppBar(
+        initialActiveIndex: _selectedIndex,
+        items: const[
+          
+          TabItem(title:'Home',icon: Icons.home_filled),
+          TabItem(icon: Icons.category, title: 'Categories'),
+          TabItem(icon: Icons.search,title: 'Search'),
+          TabItem(icon: Icons.person,title: 'Profile'),
         ],
         onTap: (index){
           setState(() {
-            _selectedIndex = index;
+            _selectedIndex=index;
           });
         },
-      ),
+        backgroundColor: Colors.brown,
+        
+      )
       
     );
   

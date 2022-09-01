@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codey/models/profileinfo.dart';
+import 'package:codey/models/userdetails.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -15,15 +16,16 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         body: SafeArea(
       child: Container(
+          color: Colors.brown[200],
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const SizedBox(height: 50),
+              const SizedBox(height: 10),
 
               //--------------------------------------------------------------->
               Profileinfo(),
               //--------------------------------------------------------------->
-              const SizedBox(height:80),
+              const SizedBox(height:10),
               Container(
                 //color: Colors.black,
                 height: MediaQuery.of(context).size.height*0.1,
@@ -92,7 +94,87 @@ class _ProfileState extends State<Profile> {
 
                   ]),),
                 //----------------------------------------------------------------->
-                SizedBox(height:15),
+                SizedBox(height:20),
+
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                      Card(
+                        color: Colors.blue,
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.push(context, 
+                              MaterialPageRoute(builder: (BuildContext context)=> const UserDetails()));
+                          },
+                          child: Container(
+                            height: MediaQuery.of(context).size.height*0.14,
+                            width: MediaQuery.of(context).size.width*0.4,
+                            child:Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                              Icon(Icons.person_outline),
+                              Text('Edit Profile'),
+                            ],)
+                          ),
+                        ),
+                        ),
+                      Card(
+                        color: Colors.blue,
+                        child: InkWell(
+                          onTap: (){},
+                          child: Container(
+                            height: MediaQuery.of(context).size.height*0.14,
+                            width: MediaQuery.of(context).size.width*0.4,
+                            child:Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                              Icon(Icons.shopping_cart_outlined),
+                              Text('List of Shops'),
+                            ],)
+                          ),
+                        ),
+                        ),
+                    ],),
+                    SizedBox(height: 18,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                      Card(
+                        color: Colors.blue,
+                        child: InkWell(
+                          onTap: (){},
+                          child: Container(
+                            height: MediaQuery.of(context).size.height*0.14,
+                            width: MediaQuery.of(context).size.width*0.4,
+                            child:Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                              Icon(Icons.settings_outlined),
+                              Text('Settings'),
+                            ],)
+                          ),
+                        ),
+                        ),
+                      Card(
+                        color: Colors.blue,
+                        child: InkWell(
+                          onTap: (){},
+                          child: Container(
+                            height: MediaQuery.of(context).size.height*0.14,
+                            width: MediaQuery.of(context).size.width*0.4,
+                            child:Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                              Icon(Icons.confirmation_num_outlined),
+                              Text('Coupon Code'),
+                            ],)
+                          ),
+                        ),
+                        ),
+                    ],)
+                  ],)
               
             ],
           )),

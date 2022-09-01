@@ -51,7 +51,7 @@ class _LoginPage extends State<Loginpage> {
                       height: 40,
                       ),
 
-                      // Box for email address
+                      // Box for email address------------------------------------------------------------->
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Container(
@@ -79,7 +79,7 @@ class _LoginPage extends State<Loginpage> {
                       height: 10,
                       ),
 
-                    // Box for password
+                    // Box for password ------------------------------------------------------------->
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
                       child: Container(
@@ -103,6 +103,7 @@ class _LoginPage extends State<Loginpage> {
                         ),
                       ),
                     ),
+                    // Box for login button ------------------------------------------------------------->
                     const SizedBox(height:20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 25),
@@ -128,6 +129,7 @@ class _LoginPage extends State<Loginpage> {
                         ),
                       ),
                     ),
+                    // box for reset password------------------------------------------------------------->
                     const SizedBox(height:20),
                     GestureDetector(
                       onTap: (){
@@ -153,6 +155,7 @@ class _LoginPage extends State<Loginpage> {
                       ),
                       ),
                     ),
+                    //------------------------------------------------------------->
                     const SizedBox(height:20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
