@@ -18,7 +18,7 @@ class Loginroute extends StatelessWidget{
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context,snapshot){
           if (snapshot.hasData){
-            return const BottomNav();
+            return  BottomNav();
           }else{
             return const Loginpage();
           }

@@ -16,6 +16,8 @@ class _FromDatabaseState extends State<FromDatabase>{
 
   List<String> docIds = [];
   final Stream<QuerySnapshot>  database = FirebaseFirestore.instance.collection('Database').snapshots();
+
+    
   
   
   bool _islikebuttonClicked = false;
@@ -50,77 +52,82 @@ class _FromDatabaseState extends State<FromDatabase>{
               if (search_data['Name'].toString().toLowerCase().startsWith(widget.brandName)){
                return Padding(
               padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(15)
-                    ),
-                  child: Row(
-                    children: [
-                      const SizedBox(width:20),
+                child: Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                  elevation: 10,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.8,
+                    height: 200,
+                    decoration: BoxDecoration(
+                      color: Colors.brown[300],
+                      //borderRadius: BorderRadius.circular(15)
+                      ),
+                    child: Row(
+                      children: [
+                        const SizedBox(width:10),
 
-                      Container(
-                        padding: const EdgeInsets.all(8.0),
-                        decoration: const BoxDecoration(),
-                        height: 90,
-                        width: 80,
-                        child: Image.asset(data.docs[index]['logo'],fit:BoxFit.fill),
+                        Container(
+                          padding: const EdgeInsets.all(8.0),
+                          decoration: const BoxDecoration(),
+                          height: 90,
+                          width: 80,
+                          child: Image.asset(data.docs[index]['logo'],fit:BoxFit.fill),
+                          ),
+
+                        const SizedBox(width:5),
+
+                        Container(
+                          width: 150,
+                          color: Colors.brown[300],
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center, 
+                            children: [
+                              Text(
+                                data.docs[index]['Name'].toString(),
+                                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
+                              ),
+                              Text(
+                              ''+data.docs[index]['offer']+ '% off'+' on selected merchandise'+'\n'+'Grab it before offer expires',
+                              style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.brown[600]),
+                              ),
+                              Text(data.docs[index].id)
+                              
+                          ],),
                         ),
 
-                      const SizedBox(width:5),
+                        const SizedBox(width:5),
 
-                      Container(
-                        width: 150,
-                        color: Colors.grey,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center, 
+                        
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              data.docs[index]['Name'].toString(),
-                              style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
-                            ),
-                            Text(
-                            ''+data.docs[index]['offer']+ '% off'+' on selected merchandise'+'\n'+'Grab it before offer expires',
-                            style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.brown[600]),
-                            ),
-                            Text(search_data['Name'])
-                            
-                        ],),
-                      ),
-
-                      const SizedBox(width:5),
-
-                      
-
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                        IconButton(
-                          onPressed: (){
-                            
-                            setState(() {
+                          IconButton(
+                            onPressed: (){
                               
-                              _islikebuttonClicked = !_islikebuttonClicked;
-                            });
-                             },
-                          icon:  Icon(Icons.favorite,
-                            color: _islikebuttonClicked? Colors.blue:Colors.red,)),
+                              setState(() {
+                                
+                                _islikebuttonClicked = !_islikebuttonClicked;
+                              });
+                               },
+                            icon:  Icon(Icons.favorite,
+                              color: _islikebuttonClicked? Colors.blue:Colors.red,)),
 
-                        const SizedBox(height: 30,),
+                          const SizedBox(height: 30,),
 
-                        MaterialButton(
-                          onPressed: (){
-                            var code = data.docs[index]['offerCode'];
-                            showDialog(context: context, builder: (BuildContext context)=> _ShowCode(getcode: code));
-                          },
-                          color: Colors.blueGrey,
-                          child: const Text('Get Code'),
-                          ),
-                      ],),
+                          MaterialButton(
+                            onPressed: (){
+                              var code = data.docs[index]['offerCode'];
+                              showDialog(context: context, builder: (BuildContext context)=> _ShowCode(getcode: code));
+                            },
+                            color: Colors.blueGrey,
+                            child: const Text('Get Code'),
+                            ),
+                        ],),
 
-                      
-                    ]),
+                        
+                      ]),
+                  ),
                 ),
               
               );

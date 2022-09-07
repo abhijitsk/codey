@@ -48,10 +48,12 @@ class _BodyPageState extends State<BodyPage> {
 
             const SizedBox(height: 8),
             //-----------------------------------------------------------------------
-            Container(
-              height: MediaQuery.of(context).size.height * 0.33,
-              width: MediaQuery.of(context).size.width * 0.90,
-              child: Image.asset('images/caraousel.png'),
+            SingleChildScrollView(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.33,
+                width: MediaQuery.of(context).size.width * 0.90,
+                child: Image.asset('images/caraousel.png'),
+              ),
             ),
             const SizedBox(height: 6),
 

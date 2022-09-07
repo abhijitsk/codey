@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:codey/main_pages/homepage.dart';
 import 'package:codey/main_pages/profile.dart';
 import 'package:codey/main_pages/search.dart';
+import 'package:codey/main_pages/categories.dart';
 
 class BottomNav extends StatefulWidget{
-  const BottomNav({Key? key}) : super(key: key);
+  BottomNav({Key? key, this.index=0 }) : super(key: key);
+  int index ;
 
   @override
   BottomNavState createState()=> BottomNavState();
@@ -23,7 +25,7 @@ class BottomNavState extends State<BottomNav>{
         return BodyPage();
 
       case 1: 
-        return BodyPage();
+        return CategoriesHome();
 
       case 2 :
         return SearchFunction();
@@ -40,9 +42,9 @@ class BottomNavState extends State<BottomNav>{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      body: _navOptions(_selectedIndex),
+      body: _navOptions(widget.index),
       bottomNavigationBar: ConvexAppBar(
-        initialActiveIndex: _selectedIndex,
+        initialActiveIndex: widget.index,
         items: const[
           
           TabItem(title:'Home',icon: Icons.home_filled),
@@ -52,7 +54,7 @@ class BottomNavState extends State<BottomNav>{
         ],
         onTap: (index){
           setState(() {
-            _selectedIndex=index;
+            widget.index=index;
           });
         },
         backgroundColor: Colors.brown,

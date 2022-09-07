@@ -28,51 +28,56 @@ class SearchFunctionState extends State<SearchFunction> {
             ),
           ),
           SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.height * 0.06,
-                width: MediaQuery.of(context).size.width * 0.7,
-                decoration: BoxDecoration(
-                    color: Colors.grey, borderRadius: BorderRadius.circular(15)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (val){
-                      setState(() {
-                        brandName = val;
-                      });
-                    },
-                    style: TextStyle(decoration: TextDecoration.none),
-                    decoration: InputDecoration(
-                        icon: Icon(
-                          Icons.search,
-                          size: 20,
-                          color: Colors.grey[700],
-                        ),
-                        hintText: 'Search the brand',
-                        border: InputBorder.none),
+          Card(
+            color: Colors.brown[200],
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+            elevation: 10,
+                      child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  decoration: BoxDecoration(
+                      color: Colors.brown[200], borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: (val){
+                        setState(() {
+                          brandName = val;
+                        });
+                      },
+                      style: TextStyle(decoration: TextDecoration.none),
+                      decoration: InputDecoration(
+                          icon: Icon(
+                            Icons.search,
+                            size: 20,
+                            color: Colors.grey[700],
+                          ),
+                          hintText: 'Search the brand',
+                          border: InputBorder.none),
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.06,
-                width: MediaQuery.of(context).size.width * 0.1,
-                decoration: BoxDecoration(
-                  color: Colors.brown[200],
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15),
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.06,
+                  width: MediaQuery.of(context).size.width * 0.1,
+                  decoration: BoxDecoration(
+                    color: Colors.brown[200],
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15),
+                    ),
                   ),
+                  child: IconButton(
+                    onPressed: (){},
+                    icon: Image.asset(
+                      'images/filter.png',
+                      color: Colors.black,)),
                 ),
-                child: IconButton(
-                  onPressed: (){},
-                  icon: Image.asset(
-                    'images/filter.png',
-                    color: Colors.black,)),
-              ),
-            SizedBox(width:5),
-            ],
+              SizedBox(width:5),
+              ],
+            ),
           ),
         SizedBox(height: 20),
         FromDatabase(brandName: brandName,),

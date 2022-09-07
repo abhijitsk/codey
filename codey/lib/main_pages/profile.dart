@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:codey/models/profileinfo.dart';
 import 'package:codey/models/userdetails.dart';
 
@@ -26,75 +24,83 @@ class _ProfileState extends State<Profile> {
               Profileinfo(),
               //--------------------------------------------------------------->
               const SizedBox(height:10),
-              Container(
-                //color: Colors.black,
-                height: MediaQuery.of(context).size.height*0.1,
-                decoration: const BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft:Radius.circular(35),
-                    bottomRight: Radius.circular(35), )),
-                
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              Card(
+                elevation: 10,
+                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(35),
+                  bottomRight: Radius.circular(35)
+                )),
+                child: Container(
+                  //color: Colors.black,
+                  height: MediaQuery.of(context).size.height*0.1,
+                  decoration: const BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft:Radius.circular(35),
+                      bottomRight: Radius.circular(35), )
+                      ),
+                  
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          '125',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                            ),),
-                        const Text(
-                          'Shops',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                            ),),
-                      ],),
-                    
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          '05',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                            ),),
-                        const Text(
-                          'Caategories',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                            ),),
-                      ],),
-                    
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          '1205',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                            ),),
-                        const Text(
-                          'Codes',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 15
-                            ),),
-                        
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            '125',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                              ),),
+                          const Text(
+                            'Shops',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                              ),),
+                        ],),
                       
-                      ],),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            '05',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                              ),),
+                          const Text(
+                            'Caategories',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                              ),),
+                        ],),
+                      
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            '1205',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                              ),),
+                          const Text(
+                            'Codes',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 15
+                              ),),
+                          
+                        
+                        ],),
 
-                  ]),),
+                    ]),),
+              ),
                 //----------------------------------------------------------------->
-                SizedBox(height:20),
+                SizedBox(height:70),
 
                 Column(
                   children: [
@@ -102,7 +108,7 @@ class _ProfileState extends State<Profile> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                       Card(
-                        color: Colors.blue,
+                        color: Colors.brown[300],
                         child: InkWell(
                           onTap: (){
                             Navigator.push(context, 
@@ -121,7 +127,7 @@ class _ProfileState extends State<Profile> {
                         ),
                         ),
                       Card(
-                        color: Colors.blue,
+                        color: Colors.brown[300],
                         child: InkWell(
                           onTap: (){},
                           child: Container(
@@ -142,7 +148,7 @@ class _ProfileState extends State<Profile> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                       Card(
-                        color: Colors.blue,
+                        color: Colors.brown[300],
                         child: InkWell(
                           onTap: (){},
                           child: Container(
@@ -158,7 +164,7 @@ class _ProfileState extends State<Profile> {
                         ),
                         ),
                       Card(
-                        color: Colors.blue,
+                        color: Colors.brown[300],
                         child: InkWell(
                           onTap: (){},
                           child: Container(

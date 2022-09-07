@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -7,14 +6,16 @@ class UserDetails extends StatefulWidget{
   const UserDetails({Key? key}) : super(key: key);
 
   @override
-  _UserDetailsState createState()=> _UserDetailsState();
+  UserDetailsState createState()=> UserDetailsState();
 }
 
-class _UserDetailsState extends State<UserDetails>{
+class UserDetailsState extends State<UserDetails>{
   final user = FirebaseAuth.instance.currentUser!;
+  DocumentSnapshot doc = FirebaseFirestore.instance.collection('EditProfile').doc().get() as DocumentSnapshot<Object?>;
+  
   
 
-
+  
   final _firstName = TextEditingController();
   final _lastName = TextEditingController();
   final _areacode = TextEditingController();
@@ -22,6 +23,15 @@ class _UserDetailsState extends State<UserDetails>{
   final _emailaddress = TextEditingController();
   final _dob = TextEditingController();
   final _vloggerId = TextEditingController();
+
+  
+
+
+  Future<DocumentSnapshot> getdata() async{
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('EditProfile').doc(user.email).get();
+      return snapshot;
+
+  }
 
 
   Future addData() async {
@@ -48,11 +58,13 @@ class _UserDetailsState extends State<UserDetails>{
 
     });
       
-    } catch (e) {print(e);
+    } catch (e) {
     }
     
 
   }
+
+
 
   @override
   void dispose(){
@@ -64,8 +76,11 @@ class _UserDetailsState extends State<UserDetails>{
     _dob.dispose();
     _emailaddress.dispose();
     super.dispose();
-    
-
+  }
+  @override
+  void initState(){
+    getdata();
+    super.initState();
   }
 
   @override
@@ -84,15 +99,18 @@ class _UserDetailsState extends State<UserDetails>{
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
+                
                 const SizedBox(height:10),
                 //-------------------------------------------------------------> ROW1
                 Row(
+                  
                   children:[
                     Expanded(
                       flex: 2,
-                      child: TextField(
-                        controller: _firstName,
-                        decoration: InputDecoration(
+                      child: TextFormField(
+                        
+                        controller: _firstName..text='hi', //..text='hi',
+                        decoration: const InputDecoration(
                           labelText: 'First Name',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
                           border: OutlineInputBorder(
@@ -105,9 +123,9 @@ class _UserDetailsState extends State<UserDetails>{
 
                     Expanded(
                       flex: 2,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _lastName,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Last Name',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
                           border: OutlineInputBorder(
@@ -121,7 +139,7 @@ class _UserDetailsState extends State<UserDetails>{
 
               const SizedBox(height:10),
               //-------------------------------------------------------------> ROW2
-              TextField(
+              TextFormField(
                 controller: _emailaddress,
                 decoration: const InputDecoration(
                 labelText: 'Email address',
@@ -136,7 +154,7 @@ class _UserDetailsState extends State<UserDetails>{
                   children:[
                     Expanded(
                       flex: 2,
-                      child: TextField(
+                      child: TextFormField(
                         controller: _areacode,
                         decoration: const InputDecoration(
                           labelText: 'Area Code',
@@ -151,7 +169,8 @@ class _UserDetailsState extends State<UserDetails>{
 
                     Expanded(
                       flex: 4,
-                      child: TextField(
+                      child: TextFormField(
+                        
                         controller: _telephone,
                         decoration: const InputDecoration(
                           labelText: 'Telephone number',
@@ -167,7 +186,7 @@ class _UserDetailsState extends State<UserDetails>{
               
               const SizedBox(height:10),
               //-------------------------------------------------------------> ROW4
-              TextField(
+              TextFormField(
                 controller: _vloggerId,
                 decoration: const InputDecoration(
                 labelText: 'vlogger ID',
@@ -213,6 +232,10 @@ class _UserDetailsState extends State<UserDetails>{
 
               Text(user.email!),
               
+              
+
+              
+              
               //-------------------------------------------------------------> ROW5
               MaterialButton(
                 onPressed: (){
@@ -222,10 +245,15 @@ class _UserDetailsState extends State<UserDetails>{
                 child: const Text('Update Info'),
                 color: Colors.grey,
                 ),
+              
+              
 
+
+              
               ]),) ),
       ),
     );
   }
 
 }
+

@@ -1,6 +1,8 @@
 import 'package:codey/main_pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/login/logoutAlert.dart';
+import 'package:codey/main_pages/bottomNav.dart';
+
 
 class SliderPage extends StatefulWidget{
   const SliderPage({Key? key}) : super(key: key);
@@ -111,7 +113,7 @@ class _SliderPage extends State<SliderPage>{
                     );
                     Navigator.pop(context);
                     Navigator.push(context, 
-                      MaterialPageRoute(builder: (context)=> Profile()));
+                      MaterialPageRoute(builder: (context)=> BottomNav(index: 3,)));
                   },
                   title: Text('Profile',
                   style:TextStyle(
@@ -233,7 +235,7 @@ class _SliderPage extends State<SliderPage>{
                     SizedBox(width: 25,), 
                     DropdownButton(
                       dropdownColor: Colors.white,
-                      style: TextStyle(fontSize: 12,color: Colors.brown,fontWeight: FontWeight.bold),
+                      style: const TextStyle(fontSize: 12,color: Colors.brown,fontWeight: FontWeight.bold),
                       value: dropdownvalue,
                       items: countrylist.map((String countrylist) => DropdownMenuItem(
                         value: countrylist,

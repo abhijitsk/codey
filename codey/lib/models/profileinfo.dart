@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-late final DocumentSnapshot snapshot;
+
 
 class Profileinfo extends StatelessWidget {
-  const Profileinfo({Key? key}) : super(key: key);
+   Profileinfo({Key? key}) : super(key: key);
+  late final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
     Future<DocumentSnapshot> data2() async {
       DocumentSnapshot snapshot = await FirebaseFirestore.instance
           .collection('EditProfile')
-          .doc('check@mail.com')
+          .doc(user.email)
           .get();
       return snapshot;
       
