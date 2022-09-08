@@ -1,6 +1,6 @@
+import 'package:codey/main_pages/editprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/models/profileinfo.dart';
-import 'package:codey/models/userdetails.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -112,7 +112,7 @@ class _ProfileState extends State<Profile> {
                         child: InkWell(
                           onTap: (){
                             Navigator.push(context, 
-                              MaterialPageRoute(builder: (BuildContext context)=> const UserDetails()));
+                              MaterialPageRoute(builder: (BuildContext context)=>  EditProfile()));
                           },
                           child: Container(
                             height: MediaQuery.of(context).size.height*0.14,

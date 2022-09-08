@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:codey/models/database.dart';
 
-class UserDetails extends StatefulWidget{
-  const UserDetails({Key? key}) : super(key: key);
 
+class EditProfile extends StatefulWidget{
   @override
-  UserDetailsState createState()=> UserDetailsState();
+  State<EditProfile> createState() => _EditProfileState();
 }
 
-class UserDetailsState extends State<UserDetails>{
+class _EditProfileState extends State<EditProfile> {
   final user = FirebaseAuth.instance.currentUser!;
-  DocumentSnapshot doc = FirebaseFirestore.instance.collection('EditProfile').doc().get() as DocumentSnapshot<Object?>;
-  
-  
 
-  
   final _firstName = TextEditingController();
+
   final _lastName = TextEditingController();
+
   final _areacode = TextEditingController();
+
   final _telephone = TextEditingController();
+
   final _emailaddress = TextEditingController();
+
   final _dob = TextEditingController();
+
   final _vloggerId = TextEditingController();
-
-  
-
-
-  Future<DocumentSnapshot> getdata() async{
-    DocumentSnapshot snapshot = await FirebaseFirestore.instance.collection('EditProfile').doc(user.email).get();
-      return snapshot;
-
-  }
-
 
   Future addData() async {
     userDetails(_firstName.text.trim(), 
@@ -64,10 +56,8 @@ class UserDetailsState extends State<UserDetails>{
 
   }
 
-
-
   @override
-  void dispose(){
+    void dispose(){
     _firstName.dispose();
     _lastName.dispose();
     _areacode.dispose();
@@ -75,11 +65,12 @@ class UserDetailsState extends State<UserDetails>{
     _vloggerId.dispose();
     _dob.dispose();
     _emailaddress.dispose();
-    super.dispose();
+      super.dispose();
   }
+
   @override
-  void initState(){
-    getdata();
+    void initState(){
+      
     super.initState();
   }
 
@@ -88,19 +79,19 @@ class UserDetailsState extends State<UserDetails>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Edit Profile'),
-        ),
-      backgroundColor: Colors.brown,
-        ),
-      body: SafeArea(
-              child: SingleChildScrollView(
-          child: Container(
-            color: Colors.brown[200],
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                
-                const SizedBox(height:10),
+        backgroundColor: Colors.brown,
+        title: Center(
+          child:Text('Edit Profile')
+      )),
+      body: FutureBuilder(
+        future: FirestoreData1().getData(),
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          return SafeArea(
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  const SizedBox(height:10),
                 //-------------------------------------------------------------> ROW1
                 Row(
                   
@@ -109,7 +100,7 @@ class UserDetailsState extends State<UserDetails>{
                       flex: 2,
                       child: TextFormField(
                         
-                        controller: _firstName..text='hi', //..text='hi',
+                        controller: _firstName..text=snapshot.data['first name'], //..text='hi',
                         decoration: const InputDecoration(
                           labelText: 'First Name',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -124,7 +115,7 @@ class UserDetailsState extends State<UserDetails>{
                     Expanded(
                       flex: 2,
                       child: TextFormField(
-                        controller: _lastName,
+                        controller: _lastName..text = snapshot.data['last name'],
                         decoration: const InputDecoration(
                           labelText: 'Last Name',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -140,7 +131,7 @@ class UserDetailsState extends State<UserDetails>{
               const SizedBox(height:10),
               //-------------------------------------------------------------> ROW2
               TextFormField(
-                controller: _emailaddress,
+                controller: _emailaddress..text=snapshot.data['email'],
                 decoration: const InputDecoration(
                 labelText: 'Email address',
                 labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -155,7 +146,7 @@ class UserDetailsState extends State<UserDetails>{
                     Expanded(
                       flex: 2,
                       child: TextFormField(
-                        controller: _areacode,
+                        controller: _areacode..text = snapshot.data['area code'],
                         decoration: const InputDecoration(
                           labelText: 'Area Code',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -171,7 +162,7 @@ class UserDetailsState extends State<UserDetails>{
                       flex: 4,
                       child: TextFormField(
                         
-                        controller: _telephone,
+                        controller: _telephone..text=snapshot.data['telephone'],
                         decoration: const InputDecoration(
                           labelText: 'Telephone number',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -187,7 +178,7 @@ class UserDetailsState extends State<UserDetails>{
               const SizedBox(height:10),
               //-------------------------------------------------------------> ROW4
               TextFormField(
-                controller: _vloggerId,
+                controller: _vloggerId..text=snapshot.data['vlogger Id'],
                 decoration: const InputDecoration(
                 labelText: 'vlogger ID',
                 labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -202,7 +193,7 @@ class UserDetailsState extends State<UserDetails>{
               //-------------------------------------------------------------> ROW4
                TextField(
                 readOnly: true,
-                controller: _dob,
+                controller: _dob..text=snapshot.data['DOB'],
                 decoration: const InputDecoration(
                 labelText: 'Birthday ',
                 labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -231,6 +222,10 @@ class UserDetailsState extends State<UserDetails>{
                 ),
 
               Text(user.email!),
+              Text('Hi'),
+              
+              
+              
               
               
 
@@ -240,20 +235,17 @@ class UserDetailsState extends State<UserDetails>{
               MaterialButton(
                 onPressed: (){
                   addData();
+                  Navigator.pop(context);
                   
                 },
                 child: const Text('Update Info'),
                 color: Colors.grey,
                 ),
-              
-              
 
-
-              
-              ]),) ),
-      ),
+                
+                ],)
+            ),);
+        },),
     );
   }
-
 }
-

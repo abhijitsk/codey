@@ -2,6 +2,8 @@ import 'package:codey/main_pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/login/logoutAlert.dart';
 import 'package:codey/main_pages/bottomNav.dart';
+import 'package:codey/models/temp.dart';
+import 'package:codey/main_pages/editprofile.dart';
 
 
 class SliderPage extends StatefulWidget{
@@ -137,6 +139,8 @@ class _SliderPage extends State<SliderPage>{
                     custColor = false;
                     countryColor =false;
                   });
+                  Navigator.pop(context);
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfile()));
                 },
                 title :const Text(
                   'Category',
