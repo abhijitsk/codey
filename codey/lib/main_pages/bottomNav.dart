@@ -1,9 +1,11 @@
+import 'package:codey/main_pages/editprofile.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/main_pages/homepage.dart';
 import 'package:codey/main_pages/profile.dart';
 import 'package:codey/main_pages/search.dart';
 import 'package:codey/main_pages/categories.dart';
+
 
 class BottomNav extends StatefulWidget{
   BottomNav({Key? key, this.index=0 }) : super(key: key);
@@ -32,7 +34,7 @@ class BottomNavState extends State<BottomNav>{
 
       case 3 :
         return Profile();
-
+        
         break;
 
       default:
@@ -44,7 +46,7 @@ class BottomNavState extends State<BottomNav>{
     return Scaffold(
       body: _navOptions(widget.index),
       bottomNavigationBar: ConvexAppBar(
-        initialActiveIndex: widget.index,
+        initialActiveIndex: 0,
         items: const[
           
           TabItem(title:'Home',icon: Icons.home_filled),

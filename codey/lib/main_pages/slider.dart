@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:codey/login/logoutAlert.dart';
 import 'package:codey/main_pages/bottomNav.dart';
 import 'package:codey/models/temp.dart';
-import 'package:codey/main_pages/editprofile.dart';
+
 
 
 class SliderPage extends StatefulWidget{
@@ -140,7 +140,7 @@ class _SliderPage extends State<SliderPage>{
                     countryColor =false;
                   });
                   Navigator.pop(context);
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfile()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>BottomNav(index: 1,)));
                 },
                 title :const Text(
                   'Category',
@@ -162,6 +162,8 @@ class _SliderPage extends State<SliderPage>{
                     settingColor = false;
                     custColor = false;
                     countryColor =false;
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Temp()));
                   });
                 },
                 title :const Text(
@@ -236,9 +238,9 @@ class _SliderPage extends State<SliderPage>{
                         fontWeight: FontWeight.bold,
                         color: Colors.brown),
                         ),
-                    SizedBox(width: 25,), 
+                    const SizedBox(width: 25,), 
                     DropdownButton(
-                      dropdownColor: Colors.white,
+                      dropdownColor: Colors.brown[200],
                       style: const TextStyle(fontSize: 12,color: Colors.brown,fontWeight: FontWeight.bold),
                       value: dropdownvalue,
                       items: countrylist.map((String countrylist) => DropdownMenuItem(

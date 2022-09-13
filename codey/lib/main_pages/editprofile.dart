@@ -51,6 +51,7 @@ class _EditProfileState extends State<EditProfile> {
     });
       
     } catch (e) {
+      print('object');
     }
     
 
@@ -86,8 +87,15 @@ class _EditProfileState extends State<EditProfile> {
       body: FutureBuilder(
         future: FirestoreData1().getData(),
         builder: (BuildContext context, AsyncSnapshot snapshot){
+          //----------------------------------------------------------------------------------------------->
+          // Needs to fills this later
+          if (snapshot.data=='empty'){
+            return const Center(child: Text('Hi'));
+            
+          }else{}
           return SafeArea(
             child: Container(
+              color: Colors.brown[200],
               padding: EdgeInsets.all(20),
               child: Column(
                 children: [
@@ -100,7 +108,7 @@ class _EditProfileState extends State<EditProfile> {
                       flex: 2,
                       child: TextFormField(
                         
-                        controller: _firstName..text=snapshot.data['first name'], //..text='hi',
+                        controller: _firstName,//..text=snapshot.data['first name'], //..text='hi',
                         decoration: const InputDecoration(
                           labelText: 'First Name',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -115,7 +123,7 @@ class _EditProfileState extends State<EditProfile> {
                     Expanded(
                       flex: 2,
                       child: TextFormField(
-                        controller: _lastName..text = snapshot.data['last name'],
+                        controller: _lastName,//..text = snapshot.data['last name'],
                         decoration: const InputDecoration(
                           labelText: 'Last Name',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -131,7 +139,7 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(height:10),
               //-------------------------------------------------------------> ROW2
               TextFormField(
-                controller: _emailaddress..text=snapshot.data['email'],
+                controller: _emailaddress,//..text=snapshot.data['email'],
                 decoration: const InputDecoration(
                 labelText: 'Email address',
                 labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -146,7 +154,7 @@ class _EditProfileState extends State<EditProfile> {
                     Expanded(
                       flex: 2,
                       child: TextFormField(
-                        controller: _areacode..text = snapshot.data['area code'],
+                        controller: _areacode,//..text = snapshot.data['area code'],
                         decoration: const InputDecoration(
                           labelText: 'Area Code',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -162,7 +170,7 @@ class _EditProfileState extends State<EditProfile> {
                       flex: 4,
                       child: TextFormField(
                         
-                        controller: _telephone..text=snapshot.data['telephone'],
+                        controller: _telephone,//..text=snapshot.data['telephone'],
                         decoration: const InputDecoration(
                           labelText: 'Telephone number',
                           labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -178,7 +186,7 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(height:10),
               //-------------------------------------------------------------> ROW4
               TextFormField(
-                controller: _vloggerId..text=snapshot.data['vlogger Id'],
+                controller: _vloggerId,//..text=snapshot.data['vlogger Id'],
                 decoration: const InputDecoration(
                 labelText: 'vlogger ID',
                 labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -190,10 +198,10 @@ class _EditProfileState extends State<EditProfile> {
 
               const SizedBox(height:10),
               
-              //-------------------------------------------------------------> ROW4
+              //-------------------------------------------------------------> ROW5
                TextField(
                 readOnly: true,
-                controller: _dob..text=snapshot.data['DOB'],
+                controller: _dob,//..text=snapshot.data['DOB'],
                 decoration: const InputDecoration(
                 labelText: 'Birthday ',
                 labelStyle: TextStyle(color: Colors.brown,fontSize: 15),
@@ -214,7 +222,7 @@ class _EditProfileState extends State<EditProfile> {
               
               const SizedBox(height:20),
               
-              //-------------------------------------------------------------> ROW5
+              //-------------------------------------------------------------> ROW6
               MaterialButton(
                 onPressed: (){},
                 color: Colors.grey,
@@ -222,7 +230,7 @@ class _EditProfileState extends State<EditProfile> {
                 ),
 
               Text(user.email!),
-              Text('Hi'),
+              //Text(snapshot.data),
               
               
               
@@ -231,7 +239,7 @@ class _EditProfileState extends State<EditProfile> {
 
               
               
-              //-------------------------------------------------------------> ROW5
+              //-------------------------------------------------------------> ROW7
               MaterialButton(
                 onPressed: (){
                   addData();

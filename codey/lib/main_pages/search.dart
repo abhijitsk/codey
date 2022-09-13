@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:codey/models/fromDatabase.dart';
 
 class SearchFunction extends StatefulWidget {
+  const SearchFunction({Key? key}) : super(key: key);
+
   @override
   SearchFunctionState createState() => SearchFunctionState();
 
@@ -15,18 +17,11 @@ class SearchFunctionState extends State<SearchFunction> {
     return SingleChildScrollView(
           child: Container(
             
-        color: Colors.brown[200],
+        color: Colors.brown[400],
         padding: EdgeInsets.all(20.0),
         child: Column(
           
           crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Text(
-            'Browse Offers',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
           SizedBox(height: 20),
           Card(
             color: Colors.brown[200],
@@ -48,7 +43,7 @@ class SearchFunctionState extends State<SearchFunction> {
                           brandName = val;
                         });
                       },
-                      style: TextStyle(decoration: TextDecoration.none),
+                      style: const TextStyle(decoration: TextDecoration.none),
                       decoration: InputDecoration(
                           icon: Icon(
                             Icons.search,
@@ -79,7 +74,7 @@ class SearchFunctionState extends State<SearchFunction> {
               ],
             ),
           ),
-        SizedBox(height: 20),
+        //SizedBox(height: 20),
         FromDatabase(brandName: brandName,),
         ]),
       ),

@@ -10,56 +10,125 @@ class CategoriesHome extends StatelessWidget{
   Widget build(BuildContext context){
     return SafeArea(
           child: Container(
-        padding: EdgeInsets.all(15.0),
-        color: Colors.brown[200],
+        padding: const EdgeInsets.all(15.0),
+        color: Colors.brown[400],
         child: Column(children: [
-          SizedBox(height:25),
+          const SizedBox(height:25),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
             Card(
               elevation: 10,
-              child: Container(
-                color: Colors.brown[200],
-                height: MediaQuery.of(context).size.height*0.35,
-                width: MediaQuery.of(context).size.width*0.42,
-                child:InkWell(
-                  child: Image.asset('images/fashion.jpg'),)
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.brown[200],
+                    height: MediaQuery.of(context).size.height*0.35,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    child:InkWell(
+                      child: Image.asset('images/fashion.jpg',
+                      fit:BoxFit.fill
+                      ),)
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.04,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    color: Colors.brown[300],
+                    child: const Center(
+                      child: Text(
+                        'Fashion',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                  ),
+                ],
               ), ),
             Card(
               elevation: 10,
-              child: Container(
-                color: Colors.brown[200],
-                height: MediaQuery.of(context).size.height*0.35,
-                width: MediaQuery.of(context).size.width*0.42,
-                child:InkWell(
-                  child: Image.asset(
-                    'images/footwear.jpg',
-                    height: MediaQuery.of(context).size.height*0.001,),)
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.brown[200],
+                    height: MediaQuery.of(context).size.height*0.35,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    child:InkWell(
+                      child: Image.asset(
+                        'images/footwear.jpg',
+                        fit:BoxFit.fill,
+                        ),)
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.04,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    color: Colors.brown[300],
+                    child: const Center(
+                      child: Text(
+                        'Footwear',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                  ),
+                ],
               ), ),
           ],),
           //------------------------------------------------------------------------------------------->
-          SizedBox(height:15),
+          const SizedBox(height:40),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
             Card(
+              
               elevation: 10,
-              child: Container(
-                color: Colors.brown[200],
-                height: MediaQuery.of(context).size.height*0.35,
-                width: MediaQuery.of(context).size.width*0.42,
-                child:InkWell(
-                  child: Image.asset('images/jewellery.jpg'),)
+              child: Column(
+                children: [
+                  Container(
+                    
+                    color: Colors.brown[200],
+                    height: MediaQuery.of(context).size.height*0.35,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    child:InkWell(
+                      child: Image.asset('images/jewellery.jpg',
+                        fit:BoxFit.fill
+                      ),)
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.04,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    color: Colors.brown[300],
+                    child: const Center(
+                      child: Text(
+                        'Jewellery',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                  ),
+                ],
               ), ),
             Card(
               elevation: 10,
-              child: Container(
-                color: Colors.brown[200],
-                height: MediaQuery.of(context).size.height*0.35,
-                width: MediaQuery.of(context).size.width*0.42,
-                child: InkWell(
-                  child: Image.asset('images/food.jpg'),)
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.brown[200],
+                    height: MediaQuery.of(context).size.height*0.35,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    child: InkWell(
+                      child: Image.asset('images/food.jpg',
+                      fit:BoxFit.fill
+                      ),)
+                  ),
+                  Container(
+                    height: MediaQuery.of(context).size.height*0.04,
+                    width: MediaQuery.of(context).size.width*0.42,
+                    color: Colors.brown[300],
+                    child: const Center(
+                      child: Text(
+                        'Food',
+                        style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        ),
+                    ),
+                  ),
+                ],
               ), ),
           ],),
           

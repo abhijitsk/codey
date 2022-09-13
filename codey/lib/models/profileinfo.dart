@@ -21,7 +21,7 @@ class Profileinfo extends StatelessWidget {
 
     return Container(
       height: 300,
-      color: Colors.brown[200],
+      color: Colors.brown[400],
       padding: const EdgeInsets.all(8.0),
       child: ListTile(
           title: FutureBuilder(

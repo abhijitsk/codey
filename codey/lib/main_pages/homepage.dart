@@ -23,7 +23,7 @@ class _BodyPageState extends State<BodyPage> {
       drawer: const SliderPage(),
       body: Container(
         padding: EdgeInsets.all(20),
-        color: Colors.brown[200],
+        color: Colors.brown[400],
         height: double.infinity,
         width: MediaQuery.of(context).size.width,
         child: SingleChildScrollView(
@@ -49,10 +49,25 @@ class _BodyPageState extends State<BodyPage> {
             const SizedBox(height: 8),
             //-----------------------------------------------------------------------
             SingleChildScrollView(
-              child: Container(
-                height: MediaQuery.of(context).size.height * 0.33,
-                width: MediaQuery.of(context).size.width * 0.90,
-                child: Image.asset('images/caraousel.png'),
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    width: MediaQuery.of(context).size.width * 0.90,
+                    child: Image.asset('images/caraousel.png',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  SizedBox(width:25),
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    width: MediaQuery.of(context).size.width * 0.90,
+                    child: Image.asset('images/wintersale.jpg',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 6),

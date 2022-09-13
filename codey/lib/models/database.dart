@@ -25,7 +25,8 @@ class FirestoreData{
 }
 
 class FirestoreData1{
-  String poda = 'poda';
+  String poda = 'empty';
+  late final user = FirebaseAuth.instance.currentUser!;
 
   List data = [];
   var data1;
@@ -33,7 +34,7 @@ class FirestoreData1{
   final CollectionReference collectionRef = FirebaseFirestore.instance.collection('EditProfile');
 
   Future getData() async{
-    data1 = await collectionRef.doc('sample@mail.com').get() ;
+    data1 = await collectionRef.doc(user.email!).get() ;
     if(data1.exists){
       Map<String,dynamic> data2 = data1.data();
       return data1;

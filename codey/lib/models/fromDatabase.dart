@@ -29,7 +29,7 @@ class _FromDatabaseState extends State<FromDatabase>{
     return Container(
       
       width: MediaQuery.of(context).size.width*1,
-      color: Colors.brown[200],
+      color: Colors.brown[400],
       child: StreamBuilder<QuerySnapshot>(stream: database,builder: (BuildContext context,AsyncSnapshot<QuerySnapshot>snapshot){
         if  (snapshot.hasError){
           return const Text('Something Went Wrong');
@@ -49,7 +49,7 @@ class _FromDatabaseState extends State<FromDatabase>{
               var search_data = snapshot.data!.docs[index].data()
                 as Map<String,dynamic>;
 
-              if (search_data['Name'].toString().toLowerCase().startsWith(widget.brandName)){
+              if (search_data['Name'].toString().toLowerCase().startsWith(widget.brandName.toLowerCase())){
                return Padding(
               padding: const EdgeInsets.all(8.0),
                 child: Card(

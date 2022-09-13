@@ -2,6 +2,8 @@ import 'package:codey/main_pages/editprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/models/profileinfo.dart';
 
+import 'bottomNav.dart';
+
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
@@ -14,7 +16,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
         body: SafeArea(
       child: Container(
-          color: Colors.brown[200],
+          color: Colors.brown[400],
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
