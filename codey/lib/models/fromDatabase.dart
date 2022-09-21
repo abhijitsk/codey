@@ -14,7 +14,7 @@ class FromDatabase extends StatefulWidget{
 
 class _FromDatabaseState extends State<FromDatabase>{
 
-  List<String> docIds = [];
+
   final Stream<QuerySnapshot>  database = FirebaseFirestore.instance.collection('Database').snapshots();
 
     
@@ -60,7 +60,6 @@ class _FromDatabaseState extends State<FromDatabase>{
                     height: 200,
                     decoration: BoxDecoration(
                       color: Colors.brown[300],
-                      //borderRadius: BorderRadius.circular(15)
                       ),
                     child: Row(
                       children: [
@@ -83,14 +82,16 @@ class _FromDatabaseState extends State<FromDatabase>{
                             mainAxisAlignment: MainAxisAlignment.center, 
                             children: [
                               Text(
+                                textAlign:TextAlign.center,
                                 data.docs[index]['Name'].toString(),
                                 style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.brown[600]),
                               ),
                               Text(
+                                textAlign:TextAlign.center,
                               ''+data.docs[index]['offer']+ '% off'+' on selected merchandise'+'\n'+'Grab it before offer expires',
                               style: TextStyle(fontSize: 10,fontWeight: FontWeight.bold,color: Colors.brown[600]),
                               ),
-                              Text(data.docs[index].id)
+                              //Text(data.docs[index].id)
                               
                           ],),
                         ),
@@ -118,7 +119,78 @@ class _FromDatabaseState extends State<FromDatabase>{
                           MaterialButton(
                             onPressed: (){
                               var code = data.docs[index]['offerCode'];
-                              showDialog(context: context, builder: (BuildContext context)=> _ShowCode(getcode: code));
+                              showModalBottomSheet(
+                                backgroundColor: Colors.brown[200],
+                                context: context,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(top:Radius.circular(25))
+                                ), 
+                                builder: (BuildContext context){
+                                return Container(
+                                  padding: const EdgeInsets.all(20),
+
+                                  height: MediaQuery.of(context).size.height*0.7,
+                                  child: Column(
+
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 50,
+                                            //child: Image.asset(data.docs[index]['logo']),
+                                            foregroundImage: AssetImage(data.docs[index]['logo'],),
+                                          ),
+
+                                          Container(
+                                            width: MediaQuery.of(context).size.width*0.5,
+                                            child: Center(
+                                              child: Text(
+                                                textAlign:TextAlign.center,
+                                                data.docs[index]['Name'].toString(),
+                                                style: const TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
+                                                ),
+                                            ),
+                                          ),
+                                          const InkWell(
+                                            
+                                            child: Icon(Icons.share),),
+                                        ],
+                                      ),
+                                      const SizedBox(height:35),
+                                      Text(
+                                        textAlign:TextAlign.center,
+                                        data.docs[index]['offer'].toString()+'% offer on selected items click below to get the offer'),
+                                      
+                                      const SizedBox(height:45),
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Container(
+                                            color: Colors.grey,
+                                            height: MediaQuery.of(context).size.height*0.05,
+                                            width: MediaQuery.of(context).size.width*0.60,
+                                            child: Center(child: Text(data.docs[index]['offerCode'])),
+                                          ),
+                                          MaterialButton(
+                                            color: Colors.grey,
+                                            onPressed: (){},
+                                            child: const Text('Copy Code'),)
+                                        ],
+                                      ),
+                                      const SizedBox(height:35),
+
+                                      const Center(child: Text(
+                                        'Visit the store',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          decoration: TextDecoration.underline),),),
+                                      
+                                    ],
+                                  ),);
+
+                              });
                             },
                             color: Colors.blueGrey,
                             child: const Text('Get Code'),
@@ -134,7 +206,8 @@ class _FromDatabaseState extends State<FromDatabase>{
  
               }
               
-              return Container();          }
+              return Container();          
+              }
             ),
         );
 
@@ -151,6 +224,7 @@ class _ShowCode extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return AlertDialog(
+      backgroundColor: Colors.brown[200],
       elevation: 4,
       contentPadding: const EdgeInsets.all(25),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -162,15 +236,15 @@ class _ShowCode extends StatelessWidget{
 
 
       content: Container(
-        
-        height: MediaQuery.of(context).size.height*0.05,
+                
+        height: MediaQuery.of(context).size.height*0.1,
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height:20),
+              const SizedBox(height:10),
               Text(
                 getcode,
-                style: const TextStyle(color: Colors.brown),
+                style: const TextStyle(color: Colors.deepOrange,fontSize: 30),
                 ),
               
             ],

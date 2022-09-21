@@ -2,7 +2,6 @@ import 'package:codey/main_pages/editprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/models/profileinfo.dart';
 
-import 'bottomNav.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -14,7 +13,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
+        body: SingleChildScrollView(
       child: Container(
           color: Colors.brown[400],
           padding: const EdgeInsets.all(8.0),

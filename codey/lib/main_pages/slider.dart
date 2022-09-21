@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:codey/login/logoutAlert.dart';
 import 'package:codey/main_pages/bottomNav.dart';
 import 'package:codey/models/temp.dart';
+import 'favupdated.dart';
 
 
 
@@ -163,7 +164,7 @@ class _SliderPage extends State<SliderPage>{
                     custColor = false;
                     countryColor =false;
                     Navigator.pop(context);
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Temp()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>FavUpdated()));
                   });
                 },
                 title :const Text(
@@ -187,6 +188,7 @@ class _SliderPage extends State<SliderPage>{
                     custColor = false;
                     countryColor =false;
                   });
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> FavUpdated()));
                 },
                 title :const Text(
                   'Settings',

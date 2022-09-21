@@ -81,11 +81,11 @@ class _EditProfileState extends State<EditProfile> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.brown,
-        title: Center(
+        title: const Center(
           child:Text('Edit Profile')
       )),
       body: FutureBuilder(
-        future: FirestoreData1().getData(),
+        future: FirestoreData().getData(),
         builder: (BuildContext context, AsyncSnapshot snapshot){
           //----------------------------------------------------------------------------------------------->
           // Needs to fills this later
@@ -96,7 +96,7 @@ class _EditProfileState extends State<EditProfile> {
           return SafeArea(
             child: Container(
               color: Colors.brown[200],
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   const SizedBox(height:10),
@@ -230,7 +230,7 @@ class _EditProfileState extends State<EditProfile> {
                 ),
 
               Text(user.email!),
-              //Text(snapshot.data),
+              Text(snapshot.data['fav'][0]),
               
               
               

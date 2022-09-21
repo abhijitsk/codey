@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 
 class Profileinfo extends StatelessWidget {
-   Profileinfo({Key? key}) : super(key: key);
+  Profileinfo({Key? key}) : super(key: key);
   late final user = FirebaseAuth.instance.currentUser!;
 
   @override
@@ -40,49 +40,51 @@ class Profileinfo extends StatelessWidget {
             );
           
           }
-            return Center(
-            child: Column(
-              children: [
-                Container(
-                
-                  child: Image.asset(
-                    'images/profile.png',
-                    height: 150,
-                    //fit: BoxFit.fill,
+            return SingleChildScrollView(
+                          child: Center(
+              child: Column(
+                children: [
+                  Container(
+                  
+                    child: Image.asset(
+                      'images/profile.png',
+                      height: 150,
+                      //fit: BoxFit.fill,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      snapshot.data['first name'],
-                      style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
-                      ),
-                    const SizedBox(width: 10),
-                    Text(
-                      snapshot.data['last name'],
-                      style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
-                      ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  snapshot.data['vlogger Id'],
-                  style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                  const SizedBox(height: 30),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        snapshot.data['first name'],
+                        style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        ),
+                      const SizedBox(width: 10),
+                      Text(
+                        snapshot.data['last name'],
+                        style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold),
+                        ),
+                    ],
                   ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Text(
-                  snapshot.data['DOB'].toString(),
-                  style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
-                  ),  
-              ],
-            ),
-          );
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    snapshot.data['vlogger Id'],
+                    style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                    ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    snapshot.data['DOB'].toString(),
+                    style: const TextStyle(fontSize: 15,fontWeight: FontWeight.bold),
+                    ), 
+                ],
+              ),
+          ),
+            );
           }else{
             return SizedBox(
               height: MediaQuery.of(context).size.height*0.2,

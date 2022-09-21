@@ -60,7 +60,7 @@ class SearchFunctionState extends State<SearchFunction> {
                   width: MediaQuery.of(context).size.width * 0.1,
                   decoration: BoxDecoration(
                     color: Colors.brown[200],
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(15),
                     ),
                   ),
@@ -70,7 +70,7 @@ class SearchFunctionState extends State<SearchFunction> {
                       'images/filter.png',
                       color: Colors.black,)),
                 ),
-              SizedBox(width:5),
+              const SizedBox(width:5),
               ],
             ),
           ),

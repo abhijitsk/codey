@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class Temp extends StatelessWidget{
+  Temp({Key? key}) : super(key: key);
   List <Map<String,dynamic>> dataList = [
     {
       'Gender':'Unisex',
@@ -105,6 +106,8 @@ class Temp extends StatelessWidget{
 
     },
   ];
+
+  
 
   
   adddata()async{
