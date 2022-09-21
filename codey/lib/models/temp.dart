@@ -1,9 +1,14 @@
+import 'package:codey/models/database.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class Temp extends StatelessWidget{
   Temp({Key? key}) : super(key: key);
+
+  final user = FirebaseAuth.instance.currentUser!;
+
   List <Map<String,dynamic>> dataList = [
     {
       'Gender':'Unisex',
@@ -117,23 +122,45 @@ class Temp extends StatelessWidget{
 
   }
 
-  
+  addarray()async{
+    var list = ['123456789'];
+    var data  = FirestoreData().getData();
+    try{
+      
+     FirebaseFirestore.instance.collection('EditProfile').doc(user.email.toString()).update({'fav':FieldValue.arrayUnion(list)});
+
+    }catch(e){
+     print('error');
+    }
+    
+    
+  }
   @override
 
   Widget build(BuildContext context){
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child:MaterialButton(
-          color: Colors.brown,
-          
-          child: Text('Add data'),
-          onPressed: (){
-            adddata();
-          },
-        )
-      ),
-      );
+    return FutureBuilder(
+      future: FirestoreData().getData(),
+      builder: (context,AsyncSnapshot data) {
+        
+        return Container(
+          color: Colors.white,
+          child: Column(
+            children: [
+              MaterialButton(
+                color: Colors.brown,
+                
+                child: Text('Add data'),
+                onPressed: (){
+                  addarray();
+                },
+              ),
+               //Text(data.data.data()['fav'].toString()),
+              //Text(check.toString())
+            ],
+          ),
+          );
+      }
+    );
     }
   
 }

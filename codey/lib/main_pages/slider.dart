@@ -188,7 +188,7 @@ class _SliderPage extends State<SliderPage>{
                     custColor = false;
                     countryColor =false;
                   });
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> FavUpdated()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Temp()));
                 },
                 title :const Text(
                   'Settings',
