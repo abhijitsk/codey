@@ -32,9 +32,12 @@ dependencies:
   cloud_firestore: ^3.4.4
   firebase_auth: ^3.5.0
   #firebase_core: ^9.0.20
-  firebase_core: ^1.20.1
   animated_splash_screen : ^1.3.0
   convex_bottom_bar: ^3.0.0
+  font_awesome_flutter: ^10.2.1
+  url_launcher: ^6.1.5
+  share_plus: ^4.4.0
+
   
 
   # The following adds the Cupertino Icons font to your application.
@@ -103,6 +106,27 @@ flutter:
     - images/balenciaga.jpg
     - images/zara.jpg
     - images/dolcegabbana.jpg
+    - images/LVMH.jpg
+    - images/rajeshexporters.jpg
+    - images/chanel.jpg
+    - images/chowtaifook.jpg
+    - images/cartier.jpg
+    - images/signet.jpg
+    - images/tiffany.jpg
+    - images/pandora.jpg
+    - images/harrywinston.jpg
+    - images/chopard.jpg
+    - images/starbucks.jpg
+    - images/mcdonalds.jpg
+    - images/subway.jpg
+    - images/yum.jpg
+    - images/kfc.jpg
+    - images/dominos.jpg
+    - images/wendys.jpg
+    - images/smokingjoeslogo.jpg
+    - images/pizzahut.png
+    - images/dunkin.jpg
+    
     
 
 

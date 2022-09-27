@@ -20,7 +20,7 @@ class _BodyPageState extends State<BodyPage> {
         title: const Text('Codey'),
         backgroundColor: Colors.brown,
       ),
-      drawer: const SliderPage(),
+      drawer:  SliderPage(),
       body: Container(
         padding: EdgeInsets.all(20),
         color: Colors.brown[400],

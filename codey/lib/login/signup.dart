@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../main_pages/editprofileUpdated.dart';
 import 'loginpage.dart';
 
 
@@ -76,6 +77,7 @@ class _SignUpState extends State<SignUp>{
                   child: Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: TextField(
+                          obscureText: true,
                           controller: _password,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -102,6 +104,7 @@ class _SignUpState extends State<SignUp>{
                   child: Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: TextField(
+                          obscureText: true,
                           controller: _confirmpassword,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
@@ -125,8 +128,10 @@ class _SignUpState extends State<SignUp>{
                     _confirmpassword.text.trim()){
                       FirebaseAuth.instance.createUserWithEmailAndPassword(
                         email: _email.text.trim(),
-                        password: _password.text.trim(),
+                        password: _password.text.trim()
                       );
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>EditProfile()));
+
                     }else{
                       ScaffoldMessenger.of(context).showSnackBar(snackBarpass);
                     }

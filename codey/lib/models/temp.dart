@@ -9,105 +9,105 @@ class Temp extends StatelessWidget{
 
   final user = FirebaseAuth.instance.currentUser!;
 
-  List <Map<String,dynamic>> dataList = [
+  final List <Map<String,dynamic>> dataList = [
     {
       'Gender':'Unisex',
-      'Name': 'Louis Vuitton',
-      'category': 'Fashion',
+      'Name': 'Starbucks',
+      'category': 'Food',
       'countries':'ALL',
-      'logo':'images/louisvuitton.jpg',
+      'logo':'images/starbucks.jpg.jpg',
+      'offer':'20',
+      'offerCode':'STARBUCKSSTAR020'
+
+    },
+    {
+      'Gender':'Unisex',
+      'Name': 'Mc Donalds',
+      'category': 'Food',
+      'countries':'ALL',
+      'logo':'images/mcdonalds.jpg',
+      'offer':'28',
+      'offerCode':'MCDONALDSMCDONA28'
+
+    },
+    {
+      'Gender':'Unisex',
+      'Name': 'Subway',
+      'category': 'Food',
+      'countries':'ALL',
+      'logo':'images/subway.jpg',
       'offer':'25',
-      'offerCode':'LOUISVUITTON25'
+      'offerCode':'CHANELCHANELCHANEL625'
 
     },
     {
       'Gender':'Unisex',
-      'Name': 'Gucci',
-      'category': 'Fashion',
+      'Name': 'Yum',
+      'category': 'Food',
       'countries':'ALL',
-      'logo':'images/gucci.jpg',
-      'offer':'25',
-      'offerCode':'GUCCI25'
+      'logo':'images/yum.jpg',
+      'offer':'5',
+      'offerCode':'YUMYUMYUMYUMY05'
 
     },
     {
       'Gender':'Unisex',
-      'Name': 'Versace',
-      'category': 'Fashion',
+      'Name': 'KFC',
+      'category': 'Food',
       'countries':'ALL',
-      'logo':'images/versace.jpg',
-      'offer':'25',
-      'offerCode':'VERSACE25'
+      'logo':'images/kfc.jpg',
+      'offer':'16',
+      'offerCode':'KFCKFCKFCKFCE16'
 
     },
     {
       'Gender':'Unisex',
-      'Name': 'Givenchy',
-      'category': 'Fashion',
+      'Name': 'Domino\'s',
+      'category': 'Food',
       'countries':'ALL',
-      'logo':'images/givenchy.jpg',
-      'offer':'25',
-      'offerCode':'GIVENCHY25'
-
-    },
-    {
-      'Gender':'Unisex',
-      'Name': 'Zara',
-      'category': 'Fashion',
-      'countries':'ALL',
-      'logo':'images/zara.jpg',
-      'offer':'70',
-      'offerCode':'ZARA70'
-
-    },
-    {
-      'Gender':'Unisex',
-      'Name': 'Balenciaga',
-      'category': 'Fashion',
-      'countries':'ALL',
-      'logo':'images/balenciaga.jpg',
+      'logo':'images/dominos.jpg',
       'offer':'30',
-      'offerCode':'BALENCIAGA30'
+      'offerCode':'00SDOMINOSDOLERS30'
 
     },
     {
       'Gender':'Unisex',
-      'Name': 'Dolce & Gabbana',
-      'category': 'Fashion',
+      'Name': 'Wendy\'s',
+      'category': 'Food',
       'countries':'ALL',
-      'logo':'images/dolcegabbana.jpg',
-      'offer':'30',
-      'offerCode':'DOLCE&GABBANA30'
+      'logo':'images/wendys.jpg',
+      'offer':'6',
+      'offerCode':'WENDYSWENDYSWERN06'
 
     },
     {
       'Gender':'Unisex',
-      'Name': 'Prada',
-      'category': 'Fashion',
+      'Name': 'Smoking Joe\'s',
+      'category': 'Food',
       'countries':'ALL',
-      'logo':'images/prada.jpg',
+      'logo':'images/smokingjoeslogo.jpg',
+      'offer':'8',
+      'offerCode':'PANDORAPANDORA0808'
+
+    },
+    {
+      'Gender':'Unisex',
+      'Name': 'PIZZA HUT ',
+      'category': 'Food',
+      'countries':'ALL',
+      'logo':'images/pizzahut.jpg',
+      'offer':'25',
+      'offerCode':'HAARY09WINSTON&M25'
+
+    },
+    {
+      'Gender':'Unisex',
+      'Name': 'Dunkin\' Donuts',
+      'category': 'Food',
+      'countries':'ALL',
+      'logo':'images/dunkin.jpg',
       'offer':'45',
-      'offerCode':'PRADA45'
-
-    },
-    {
-      'Gender':'Unisex',
-      'Name': 'H&M',
-      'category': 'Fashion',
-      'countries':'ALL',
-      'logo':'images/h&m.jpg',
-      'offer':'45',
-      'offerCode':'CODEH&M45'
-
-    },
-    {
-      'Gender':'Unisex',
-      'Name': 'Levi\'s',
-      'category': 'Fashion',
-      'countries':'ALL',
-      'logo':'images/levis.jpg',
-      'offer':'45',
-      'offerCode':'LEVIS45'
+      'offerCode':'DUNKINSDONUTSKLO045'
 
     },
   ];
@@ -151,7 +151,7 @@ class Temp extends StatelessWidget{
                 
                 child: Text('Add data'),
                 onPressed: (){
-                  addarray();
+                  adddata();
                 },
               ),
                //Text(data.data.data()['fav'].toString()),
