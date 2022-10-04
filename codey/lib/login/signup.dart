@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import '../main_pages/editprofileUpdated.dart';
+import '../main_pages/editprofile.dart';
 import 'loginpage.dart';
 
 

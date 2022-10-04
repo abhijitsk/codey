@@ -1,4 +1,4 @@
-import 'package:codey/main_pages/editprofileUpdated.dart';
+import 'package:codey/main_pages/editprofile.dart';
 import 'package:flutter/material.dart';
 import 'package:codey/models/profileinfo.dart';
 

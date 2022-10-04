@@ -1,5 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import 'loginpage.dart';
+
 
 class LogOutPopUp extends StatelessWidget{
   final user = FirebaseAuth.instance.currentUser!;
@@ -43,6 +48,7 @@ class LogOutPopUp extends StatelessWidget{
         TextButton(onPressed: (){
           Navigator.pop(context);
           FirebaseAuth.instance.signOut();
+          Navigator.push(context, MaterialPageRoute(builder: (context)=>const Loginpage()));
         },
         child: const Text('Yes',
         style: TextStyle(
